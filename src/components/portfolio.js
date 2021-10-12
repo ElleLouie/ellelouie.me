@@ -2,6 +2,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Parallax from 'react-rellax';
+import ppeImage from '../img/gen_cover.png';
 
 function Portfolio(props) {
   return (
@@ -25,7 +26,7 @@ function Portfolio(props) {
             <div className="box">
               <div className="img_detail">
                 {/* <div className="NG" /> */}
-                <img src="/src/img/gen_cover.PNG" alt="" />
+                <img src={ppeImage} alt="" />
                 <NavLink to="/portfolio/nextgen" className="img__description">
                   <h2>PPE Smart Helmet</h2>
                   <div className="white_line" />
