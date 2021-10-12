@@ -2,26 +2,30 @@ import React from 'react';
 import 'react-slideshow-image/dist/styles.css';
 import { Slide } from 'react-slideshow-image';
 
+import img1 from '../img/picked/_1.png';
+import img2 from '../img/picked/_2.png';
+import img3 from '../img/picked/_3.png';
+import img4 from '../img/picked/_4.png';
+import img5 from '../img/picked/_5.png';
+import img6 from '../img/picked/_6.png';
+import img7 from '../img/picked/_7.png';
+import img8 from '../img/picked/_8.png';
+import img9 from '../img/picked/_9.png';
+import img10 from '../img/picked/_10.png';
+import img11 from '../img/picked/_11.png';
+import img12 from '../img/picked/_12.png';
+import img13 from '../img/picked/_13.png';
+import img14 from '../img/picked/_14.png';
+import img15 from '../img/picked/_15.png';
+import img16 from '../img/picked/_16.png';
+import img17 from '../img/picked/_17.png';
+import img18 from '../img/picked/_18.png';
+import img19 from '../img/picked/_19.png';
+
 const slideImages = [
-  '/src/img/picked/1.png',
-  '/src/img/picked/2.png',
-  '/src/img/picked/3.png',
-  '/src/img/picked/4.png',
-  '/src/img/picked/5.png',
-  '/src/img/picked/6.png',
-  '/src/img/picked/7.png',
-  '/src/img/picked/8.png',
-  '/src/img/picked/9.png',
-  '/src/img/picked/10.png',
-  '/src/img/picked/11.png',
-  '/src/img/picked/12.png',
-  '/src/img/picked/13.png',
-  '/src/img/picked/14.png',
-  '/src/img/picked/15.png',
-  '/src/img/picked/16.png',
-  '/src/img/picked/17.png',
-  '/src/img/picked/18.png',
-  '/src/img/picked/19.png',
+  img1, img2, img3, img4, img5, img6, img7, img8, img9,
+  img10, img11, img12, img13, img14, img15, img16,
+  img17, img18, img19,
 ];
 
 function Pickpocked(props) {
@@ -85,9 +89,6 @@ function Pickpocked(props) {
         </div>
         <div className="each-slide">
           <div style={{ backgroundImage: `url(${slideImages[18]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[19]})` }} />
         </div>
       </Slide>
       <div className="description">

@@ -491,6 +491,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    padding: 3%;
   }
   .description {
     padding: 5%;

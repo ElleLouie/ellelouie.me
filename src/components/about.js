@@ -1,5 +1,10 @@
 import React from 'react';
 
+import rIcon from '../img/icon/r.png';
+import swIcon from '../img/icon/sw.png';
+import psIcon from '../img/icon/ps.png';
+import aiIcon from '../img/icon/ai.png';
+
 function About(props) {
   return (
     <div className="about">
@@ -65,19 +70,19 @@ function About(props) {
       </div>
       <div className="icons">
         <div className="icons_item">
-          <img src="/src/img/icon/r.png" alt="v1" />
+          <img src={rIcon} alt="v1" />
           <h4>Rhino</h4>
         </div>
         <div className="icons_item">
-          <img src="/src/img/icon/sw.png" alt="v1" />
+          <img src={swIcon} alt="v1" />
           <h4>SolidWorks</h4>
         </div>
         <div className="icons_item">
-          <img src="/src/img/icon/ps.png" alt="v1" />
+          <img src={psIcon} alt="v1" />
           <h4>Photoshop</h4>
         </div>
         <div className="icons_item">
-          <img src="/src/img/icon/ai.png" alt="v1" />
+          <img src={aiIcon} alt="v1" />
           <h4>Illustrator</h4>
         </div>
       </div>

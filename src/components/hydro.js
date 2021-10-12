@@ -2,12 +2,18 @@ import React from 'react';
 import 'react-slideshow-image/dist/styles.css';
 import { Slide } from 'react-slideshow-image';
 
+import hydro1 from '../img/hydro/1.png';
+import hydro2 from '../img/hydro/2.png';
+import hydro3 from '../img/hydro/3.png';
+import hydro4 from '../img/hydro/4.png';
+import hydro5 from '../img/hydro/5.png';
+
 const slideImages = [
-  '/src/img/hydro/1.png',
-  '/src/img/hydro/2.png',
-  '/src/img/hydro/3.png',
-  '/src/img/hydro/4.png',
-  '/src/img/hydro/5.png',
+  hydro1,
+  hydro2,
+  hydro3,
+  hydro4,
+  hydro5,
 ];
 
 function HydroPlanter(props) {

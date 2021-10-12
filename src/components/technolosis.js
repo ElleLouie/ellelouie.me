@@ -1,15 +1,23 @@
 import React from 'react';
 
+import img1 from '../img/tech/1_.png';
+import img2 from '../img/tech/2_.png';
+import img3 from '../img/tech/3_.png';
+import img4 from '../img/tech/4_.png';
+import img5 from '../img/tech/5_.png';
+import img6 from '../img/tech/6_.png';
+import img7 from '../img/tech/technolosis.png';
+
 function Technolosis(props) {
   return (
     <div className="Tech">
       <div className="col col1">
-        <img src="/src/img/tech/1.JPG" alt="" />
-        <img src="/src/img/tech/2.JPG" alt="" />
-        <img src="/src/img/tech/3.JPG" alt="" />
+        <img src={img1} alt="" />
+        <img src={img2} alt="" />
+        <img src={img3} alt="" />
       </div>
       <div className="col col2">
-        <img src="/src/img/tech/4.JPG" alt="" />
+        <img src={img4} alt="" />
         <div className="Tech description">
           <h1> Scuplture: technolosis </h1>
           <p>
@@ -35,9 +43,9 @@ function Technolosis(props) {
           </p>
         </div>
         <div className="row">
-          <img src="/src/img/tech/6.JPG" alt="" />
-          <img src="/src/img/tech/5.JPG" alt="" />
-          <img src="/src/img/tech/technolosis.jpeg" alt="" />
+          <img src={img5} alt="" />
+          <img src={img6} alt="" />
+          <img src={img7} alt="" />
         </div>
       </div>
 

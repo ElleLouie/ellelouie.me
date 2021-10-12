@@ -2,7 +2,19 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Parallax from 'react-rellax';
-import ppeImage from '../img/gen_cover.png';
+
+import ppeImg from '../img/gen_cover.png';
+import snapImg from '../img/snappy_cover.png';
+import archImg from '../img/arch_cover.png';
+import saImg from '../img/sa_cover.png';
+import sculpImg from '../img/sculp_cover.png';
+import pickImg from '../img/pick_cover.png';
+import storiesImg from '../img/stories_cover.png';
+
+import hydroImg from '../img/hydro_cover.png';
+import fearImg from '../img/fear_cover.png';
+import spillImg from '../img/spill_cover.png';
+import dartImg from '../img/dart_cover.png';
 
 function Portfolio(props) {
   return (
@@ -25,8 +37,7 @@ function Portfolio(props) {
           <Parallax className="col col1" speed={-3}>
             <div className="box">
               <div className="img_detail">
-                {/* <div className="NG" /> */}
-                <img src={ppeImage} alt="" />
+                <img src={ppeImg} alt="" />
                 <NavLink to="/portfolio/nextgen" className="img__description">
                   <h2>PPE Smart Helmet</h2>
                   <div className="white_line" />
@@ -36,8 +47,7 @@ function Portfolio(props) {
             </div>
             <div className="box">
               <div className="img_detail">
-                {/* <div className="SP" /> */}
-                <img src="/src/img/snappy_cover.PNG" alt="v1" />
+                <img src={snapImg} alt="v1" />
                 <NavLink to="/portfolio/snappy" className="img__description">
                   <h2>Snappy</h2>
                   <div className="white_line" />
@@ -47,8 +57,7 @@ function Portfolio(props) {
             </div>
             <div className="box">
               <div className="img_detail">
-                {/* <div className="PV" /> */}
-                <img src="/src/img/arch_cover.png" alt="v1" />
+                <img src={archImg} alt="v1" />
                 <NavLink to="/portfolio/pavilion" className="img__description">
                   <h2>Architecture: Artist Pavilion</h2>
                   <div className="white_line" />
@@ -60,8 +69,7 @@ function Portfolio(props) {
           <Parallax className="col col2 rellax" speed={6}>
             <div className="box">
               <div className="img_detail">
-                {/* <div className="SA" /> */}
-                <img src="/src/img/sa_cover.png" alt="v1" />
+                <img src={saImg} alt="v1" />
                 <NavLink to="/portfolio/studioart" className="img__description">
                   <h2>studio art</h2>
                   <div className="white_line" />
@@ -71,8 +79,7 @@ function Portfolio(props) {
             </div>
             <div className="box">
               <div className="img_detail">
-                {/* <div className="TC" /> */}
-                <img src="/src/img/sculp_cover.png" alt="v1" />
+                <img src={sculpImg} alt="v1" />
                 <NavLink to="/portfolio/technolosis" className="img__description">
                   <h2>Scuplture: technolosis</h2>
                   <div className="white_line" />
@@ -82,8 +89,7 @@ function Portfolio(props) {
             </div>
             <div className="box">
               <div className="img_detail">
-                {/* <div className="PC" /> */}
-                <img src="/src/img/pick_cover.png" alt="v1" />
+                <img src={pickImg} alt="v1" />
                 <NavLink to="/portfolio/pickpocked" className="img__description">
                   <h2>Pickpocked Blocked</h2>
                   <div className="white_line" />
@@ -93,8 +99,7 @@ function Portfolio(props) {
             </div>
             <div className="box">
               <div className="img_detail">
-                {/* <div className="OS" /> */}
-                <img src="/src/img/stories_cover.png" alt="v1" />
+                <img src={storiesImg} alt="v1" />
                 <NavLink to="/portfolio/ourstories" className="img__description">
                   <h2>OurStories</h2>
                   <div className="white_line" />
@@ -107,7 +112,7 @@ function Portfolio(props) {
         <h1> minis </h1>
         <div className="minis">
           <div className="minis_img">
-            <img src="/src/img/hydro_cover.png" alt="v1" />
+            <img src={hydroImg} alt="v1" />
             <NavLink to="/portfolio/hydro" className="minis_description">
               <h2>Hydroplanter</h2>
               <div className="white_line" />
@@ -115,7 +120,7 @@ function Portfolio(props) {
             </NavLink>
           </div>
           <div className="minis_img">
-            <img src="/src/img/fear_cover.png" alt="v1" />
+            <img src={fearImg} alt="v1" />
             <NavLink to="/portfolio/fearnot" className="minis_description">
               <h2>fear not</h2>
               <div className="white_line" />
@@ -123,7 +128,7 @@ function Portfolio(props) {
             </NavLink>
           </div>
           <div className="minis_img">
-            <img src="/src/img/spill_cover.png" alt="v1" />
+            <img src={spillImg} alt="v1" />
             <NavLink to="/portfolio/spillthebeans" className="minis_description">
               <h2>spill the beans</h2>
               <div className="white_line" />
@@ -131,7 +136,7 @@ function Portfolio(props) {
             </NavLink>
           </div>
           <div className="minis_img">
-            <img src="/src/img/dart_cover.png" alt="v1" />
+            <img src={dartImg} alt="v1" />
             <NavLink to="/portfolio/dartterm" className="minis_description">
               <h2>dartterm</h2>
               <div className="white_line" />

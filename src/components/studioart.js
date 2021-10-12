@@ -1,16 +1,25 @@
 import React from 'react';
 
+import sa1 from '../img/studioart/1.jpg';
+import sa2 from '../img/studioart/1.5.jpg';
+import sa3 from '../img/studioart/4.jpg';
+import sa4 from '../img/studioart/7.jpg';
+import sa5 from '../img/studioart/2.jpg';
+import sa6 from '../img/studioart/3.jpg';
+import sa7 from '../img/studioart/5.jpg';
+import sa8 from '../img/studioart/8.jpg';
+
 function StudioArt(props) {
   return (
     <div className="StudioArt">
       <div className="col">
-        <img src="/src/img/studioart/1.jpg" alt="" />
-        <img src="/src/img/studioart/1.5.jpg" alt="" />
-        <img src="/src/img/studioart/4.jpg" alt="" />
-        <img src="/src/img/studioart/7.jpg" alt="" />
+        <img src={sa1} alt="" />
+        <img src={sa2} alt="" />
+        <img src={sa3} alt="" />
+        <img src={sa4} alt="" />
       </div>
       <div className="col">
-        <img src="/src/img/studioart/2.jpg" alt="" />
+        <img src={sa5} alt="" />
         <div className="description">
           <h1> Studio Art </h1>
           <p>
@@ -20,9 +29,9 @@ function StudioArt(props) {
             sketches and thoroughly work through the design process to create a final product.
           </p>
         </div>
-        <img src="/src/img/studioart/3.jpg" alt="" />
-        <img src="/src/img/studioart/5.jpg" alt="" />
-        <img src="/src/img/studioart/8.jpg" alt="" />
+        <img src={sa6} alt="" />
+        <img src={sa7} alt="" />
+        <img src={sa8} alt="" />
       </div>
     </div>
   );

@@ -1,12 +1,20 @@
 import React from 'react';
 
+import pav from '../img/pavilion.jpeg';
+import pav1 from '../img/pav/rendered1.jpg';
+import pav2 from '../img/pav/rendered2.jpg';
+import overview from '../img/pav/overview.jpg';
+import pavFinal from '../img/pav/final.png';
+import pavExploded from '../img/pav/exploded.png';
+import pavPlan from '../img/pav/plan.png';
+
 function Pavilion(props) {
   return (
     <div className="Pav">
       <div className="row">
-        <img src="/src/img/pavilion.jpeg" alt="" />
-        <img src="/src/img/pav/rendered1.jpg" alt="" />
-        <img src="/src/img/pav/rendered2.jpg" alt="" />
+        <img src={pav} alt="" />
+        <img src={pav1} alt="" />
+        <img src={pav2} alt="" />
       </div>
       <div className="description">
         <h1> Architecture: Artist Pavilion </h1>
@@ -31,11 +39,11 @@ function Pavilion(props) {
           Mayan Temples , however still intended to be seen from miles away.
         </p>
       </div>
-      <img src="/src/img/pav/overview.jpg" alt="" />
+      <img src={overview} alt="" />
       <div className="row">
-        <img src="/src/img/pav/final.png" alt="" />
-        <img src="/src/img/pav/exploded.png" alt="" />
-        <img src="/src/img/pav/plan.png" alt="" />
+        <img src={pavFinal} alt="" />
+        <img src={pavExploded} alt="" />
+        <img src={pavPlan} alt="" />
       </div>
     </div>
   );

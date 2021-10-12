@@ -1,11 +1,12 @@
 import React from 'react';
+import storiesImg from '../img/OurStories.png';
 
 function OurStories(props) {
   return (
     <div className="OurStories">
       <div className="row">
         <div className="gif_item">
-          <img src="/src/img/OurStories.png" alt="v1" />
+          <img src={storiesImg} alt="v1" />
           {/* <iframe title="landing" src="https://giphy.com/embed/4KjNtxrEr8cW7x0NZa" width="480" height="288" frameBorder="0" className="giphy-embed" allowFullScreen />
           <p><a href="https://giphy.com/gifs/landing-4KjNtxrEr8cW7x0NZa">via GIPHY</a></p> */}
         </div>
