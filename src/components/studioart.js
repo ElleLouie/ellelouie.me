@@ -1,13 +1,13 @@
 import React from 'react';
 
-import sa1 from '../img/studioart/1.jpg';
-import sa2 from '../img/studioart/1.5.jpg';
-import sa3 from '../img/studioart/4.jpg';
-import sa4 from '../img/studioart/7.jpg';
-import sa5 from '../img/studioart/2.jpg';
-import sa6 from '../img/studioart/3.jpg';
-import sa7 from '../img/studioart/5.jpg';
-import sa8 from '../img/studioart/8.jpg';
+import sa1 from '../img/studioart/img_1.jpg';
+import sa2 from '../img/studioart/img_2.jpg';
+import sa3 from '../img/studioart/img_5.jpg';
+import sa4 from '../img/studioart/img_7.jpg';
+import sa5 from '../img/studioart/img_3.jpg';
+import sa6 from '../img/studioart/img_4.jpg';
+import sa7 from '../img/studioart/img_6.jpg';
+import sa8 from '../img/studioart/img_8.jpg';
 
 function StudioArt(props) {
   return (
