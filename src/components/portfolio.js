@@ -25,7 +25,7 @@ function Portfolio(props) {
             <div className="box">
               <div className="img_detail">
                 {/* <div className="NG" /> */}
-                <img src="/src/img/gen_cover.png" alt="" />
+                <img src="/src/img/gen_cover.PNG" alt="" />
                 <NavLink to="/portfolio/nextgen" className="img__description">
                   <h2>PPE Smart Helmet</h2>
                   <div className="white_line" />
@@ -36,7 +36,7 @@ function Portfolio(props) {
             <div className="box">
               <div className="img_detail">
                 {/* <div className="SP" /> */}
-                <img src="/src/img/snappy_cover.png" alt="v1" />
+                <img src="/src/img/snappy_cover.PNG" alt="v1" />
                 <NavLink to="/portfolio/snappy" className="img__description">
                   <h2>Snappy</h2>
                   <div className="white_line" />
