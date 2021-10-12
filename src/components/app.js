@@ -1,48 +1,54 @@
 import React from 'react';
 import {
-  BrowserRouter as Router, Route, NavLink, Switch,
+  BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
-import Counter from './counter';
-import Controls from './controls';
+import Home from './home';
+import Nav from './nav';
+import About from './about';
+import Contact from './contact';
+import Portfolio from './portfolio';
+import OurStories from './ourStories';
+import HydroPlanter from './hydro';
+import NextGen from './nextGen';
+import Snappy from './snappy';
+import Pavilion from './pavilion';
+import StudioArt from './studioart';
+import Technolosis from './technolosis';
+import Pickpocked from './pickpocked';
+import FearNot from './fear';
+import Spill from './spill';
+import Dart from './dart';
 
-const About = (props) => {
-  return <div> All there is to know about me </div>;
-};
-const Welcome = (props) => {
-  return <div>Welcome<Counter /><Controls /></div>;
-};
-const Test = (props) => {
-  return <div> ID: {props.match.params.id} </div>;
-};
 const FallBack = (props) => {
   return <div>URL Not Found</div>;
 };
-const Nav = (props) => {
-  return (
-    <nav>
-      <ul>
-        <li><NavLink to="/" exact>Home</NavLink></li>
-        <li><NavLink to="/about">About</NavLink></li>
-        <li><NavLink to="/test/id1">test id1</NavLink></li>
-        <li><NavLink to="/test/id2">test id2</NavLink></li>
-      </ul>
-    </nav>
-  );
-};
-const App = (props) => {
+
+function App(props) {
   return (
     <Router>
       <div>
         <Nav />
         <Switch>
-          <Route exact path="/" component={Welcome} />
-          <Route path="/about" component={About} />
-          <Route exact path="/test/:id" component={Test} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/contact" component={Contact} />
+          <Route exact path="/portfolio" component={Portfolio} />
+          <Route exact path="/portfolio/ourstories" component={OurStories} />
+          <Route exact path="/portfolio/nextgen" component={NextGen} />
+          <Route exact path="/portfolio/snappy" component={Snappy} />
+          <Route exact path="/portfolio/pavilion" component={Pavilion} />
+          <Route exact path="/portfolio/studioart" component={StudioArt} />
+          <Route exact path="/portfolio/technolosis" component={Technolosis} />
+          <Route exact path="/portfolio/pickpocked" component={Pickpocked} />
+          <Route exact path="/portfolio/hydro" component={HydroPlanter} />
+          <Route exact path="/portfolio/fearnot" component={FearNot} />
+          <Route exact path="/portfolio/spillthebeans" component={Spill} />
+          <Route exact path="/portfolio/dartterm" component={Dart} />
           <Route component={FallBack} />
         </Switch>
       </div>
     </Router>
   );
-};
+}
 
 export default App;
