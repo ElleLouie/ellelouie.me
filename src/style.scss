@@ -319,6 +319,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  width: 100%;
   
   div {
     display: flex;
@@ -376,7 +377,9 @@ Note: Beware of modifying this element as it can break the animations - you shou
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  
+  h2 {
+    text-align: center;
+  }
   div {
     display: flex;
     flex-direction: row;
@@ -387,6 +390,10 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .img_tools_container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: auto;
 }
 .img_tools {
   background-color: #b4b4b4;
@@ -394,6 +401,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   border-radius: 20px;
   padding: 5px 10px;
   margin: 10px;
+
   font-family: 'Montserrat', sans-serif;
 }
 

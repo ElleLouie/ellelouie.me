@@ -124,7 +124,7 @@ function Portfolio(props) {
             <NavLink to="/portfolio/fearnot" className="minis_description">
               <h2>fear not</h2>
               <div className="white_line" />
-              <div className="img_tools_container"><p className="img_tools"> html/css </p><p className="img_tools"> mural </p><p className="img_tools"> prototyping </p></div>
+              <div className="img_tools_container"><p className="img_tools"> html/css </p></div>
             </NavLink>
           </div>
           <div className="minis_img">
@@ -140,7 +140,7 @@ function Portfolio(props) {
             <NavLink to="/portfolio/dartterm" className="minis_description">
               <h2>dartterm</h2>
               <div className="white_line" />
-              <div className="img_tools_container"><p className="img_tools"> user research </p> </div>
+              <div className="img_tools_container"><p className="img_tools"> html/css </p><p className="img_tools"> javascript </p></div>
             </NavLink>
           </div>
         </div>
