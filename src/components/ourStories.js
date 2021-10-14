@@ -14,7 +14,7 @@ function OurStories(props) {
           <h1> Our Stories </h1>
           <h3>Figma React</h3>
           <p>
-            OurStories is a community education platform that makes it easier for people to share and learn about perspectives on history and society that are
+            Our Stories is a community education platform that makes it easier for people to share and learn about perspectives on history and society that are
             often left out of mainstream educational curricula and media. Our mission is to create an environment of knowledge-sharing that encourages
             critical thought about these perspectives and to stand in the shoes of people different from ourselves.
           </p>

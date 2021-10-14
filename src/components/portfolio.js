@@ -101,7 +101,7 @@ function Portfolio(props) {
               <div className="img_detail">
                 <img src={storiesImg} alt="v1" />
                 <NavLink to="/portfolio/ourstories" className="img__description">
-                  <h2>OurStories</h2>
+                  <h2>Our Stories</h2>
                   <div className="white_line" />
                   <div className="img_tools_container"><p className="img_tools"> figma </p><p className="img_tools"> react </p></div>
                 </NavLink>
@@ -114,7 +114,7 @@ function Portfolio(props) {
           <div className="minis_img">
             <img src={hydroImg} alt="v1" />
             <NavLink to="/portfolio/hydro" className="minis_description">
-              <h2>Hydroplanter</h2>
+              <h2>hydroplanter</h2>
               <div className="white_line" />
               <div className="img_tools_container"><p className="img_tools"> user research </p><p className="img_tools"> mural </p><p className="img_tools"> prototyping </p></div>
             </NavLink>

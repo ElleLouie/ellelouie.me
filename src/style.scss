@@ -319,7 +319,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  width: 100%;
   
   div {
     display: flex;
@@ -501,6 +500,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
     align-items: center;
     width: 100%;
     padding: 3%;
+    height: fit-content;
+    flex-wrap: wrap;
   }
   .description {
     padding: 5%;

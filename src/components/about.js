@@ -86,7 +86,7 @@ function About(props) {
           <h4>Illustrator</h4>
         </div>
       </div>
-      <h1>other interest</h1>
+      <h1>other interests</h1>
       <p className="about_interest"> I find learning new sports such as surfing, golf and tennis, trying new foods, and meeting new people
         the best way to spend my free time.
       </p>
