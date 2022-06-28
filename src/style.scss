@@ -1,5 +1,6 @@
 body, html {
     font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
     // background: linear-gradient(to bottom, #87e0fd 0%,#ecc485 40%,#94e59c 100%);
     height: 100%;
     margin:0;
@@ -312,6 +313,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   background: rgba(0, 0, 0, 0.72);
   color: white;
   font-family: 'DM Serif Display', serif;
+  font-size: 0.8em;
   visibility: hidden;
   opacity: 0;
   display: flex;
@@ -319,10 +321,12 @@ Note: Beware of modifying this element as it can break the animations - you shou
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  overflow: hidden;
   
   div {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
   }
   /* transition effect. not necessary */
   transition: opacity .2s, visibility .2s;
@@ -369,6 +373,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   background: rgba(0, 0, 0, 0.72);
   color: white;
   font-family: 'DM Serif Display', serif;
+  font-size: 0.8em;
   visibility: hidden;
   opacity: 0;
   display: flex;
@@ -382,6 +387,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   div {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
   }
   /* transition effect. not necessary */
   transition: opacity .2s, visibility .2s;
