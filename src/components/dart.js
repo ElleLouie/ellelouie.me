@@ -4,7 +4,7 @@ function Dart(props) {
   return (
     <div className="Mini">
       <div>
-        <iframe title="landing" src="https://giphy.com/embed/Aixd1E04rAgvxdE62P" width="480" height="288" frameBorder="0" className="giphy-embed" allowFullScreen />
+        <iframe title="landing" src="https://giphy.com/embed/Aixd1E04rAgvxdE62P" frameBorder="0" className="giphy-embed" allowFullScreen />
         <p><a href="https://giphy.com/gifs/dartterm-Aixd1E04rAgvxdE62P">via GIPHY</a></p>
       </div>
       <div className="description">
