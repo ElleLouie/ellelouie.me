@@ -709,7 +709,10 @@ Note: Beware of modifying this element as it can break the animations - you shou
   }
 }
 .slide-container {
-  padding:  5%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Hydro {
@@ -719,15 +722,15 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .giphy-embed {
- width: 700px;
- height: 450px;
+ width: 600px;
+ height: 350px;
 }
 
 .Mini{
   display: flex;
   flex-direction: row;
   padding: 8%;
-  align-items: center;
+  align-items:center;
   justify-content: space-evenly;
   flex-wrap: wrap;
   .description{
@@ -736,6 +739,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
     align-items: center;
     justify-content: center;
     width: 40%;
+    margin-left: 20px;
     .col {
       display: flex;
       flex-direction: column;
@@ -754,17 +758,15 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 // slideshow
 .slider {
-  width: 100%;
+  width: 40%;
   margin: auto;
-  
 }
 .each-slide > div {
   display: flex;
   align-items: center;
   justify-content: center;
   background-size: cover;
-  height: 900px;
-
+  height: 500px;
 }
 
 .each-slide span {
