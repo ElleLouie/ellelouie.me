@@ -19,23 +19,18 @@ const slideImages = [
 function HydroPlanter(props) {
   return (
     <div className="Hydro">
-      <Slide easing="ease" className="slider">
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[0]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[1]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[2]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[3]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[4]})` }} />
-        </div>
-      </Slide>
+      <div className="slide-container">
+        <Slide easing="ease" className="slider">
+          {slideImages.map((item) => {
+            return (
+              <div className="each-slide">
+                <div style={{ backgroundImage: `url(${item})` }} />
+              </div>
+
+            );
+          })}
+        </Slide>
+      </div>
       <div className="description">
         <h1> Hydroplanter </h1>
         <h3> User Research Mural Prototyping</h3>

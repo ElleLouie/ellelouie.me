@@ -31,66 +31,18 @@ const slideImages = [
 function Pickpocked(props) {
   return (
     <div className="Picked">
-      <Slide easing="ease" className="slider">
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[0]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[1]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[2]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[3]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[4]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[5]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[6]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[7]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[8]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[9]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[10]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[11]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[12]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[13]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[14]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[15]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[16]})` }} />
-        </div>
+      <div className="slide-container">
+        <Slide easing="ease" className="slider">
+          {slideImages.map((item) => {
+            return (
+              <div className="each-slide">
+                <div style={{ backgroundImage: `url(${item})` }} />
+              </div>
 
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[17]})` }} />
-        </div>
-        <div className="each-slide">
-          <div style={{ backgroundImage: `url(${slideImages[18]})` }} />
-        </div>
-      </Slide>
+            );
+          })}
+        </Slide>
+      </div>
       <div className="description">
         <h1> Pickedpocked Blocked </h1>
         <h2> User Research SolidWorks Prototyping</h2>

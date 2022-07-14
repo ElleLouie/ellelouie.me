@@ -19,9 +19,9 @@ function Home(props) {
       </div>
       <div className="line" />
       <div className="home_nav">
-        <NavLink to="/about" className="nav-item">about</NavLink>
-        <NavLink to="/portfolio" className="nav-item">portfolio</NavLink>
-        <NavLink to="/contact" className="nav-item">contact</NavLink>
+        <NavLink to="/about" className="nav-item-home">about</NavLink>
+        <NavLink to="/portfolio" className="nav-item-home">portfolio</NavLink>
+        <NavLink to="/contact" className="nav-item-home">contact</NavLink>
       </div>
       <div className="flower_container">
         <div className="flower__head" />
