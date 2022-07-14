@@ -40,7 +40,7 @@ function About(props) {
             cultivated a passion around the creative and collaborative design process. I truly love exploring the intersection between the technical side of engineering
             and the creativity of studio art and have learned the incredible value behind both.
             In addition, my time on the Dartmouth basketball team has taught me the value of vulnerability when serving in a position of leadership
-            and has truly challenged me to strengthen my communication skills. As an inquisitive person, I hope to contribute my curiosity and energy towards creating
+            and has truly challenged me to strengthen my communication skills. As a thoughtful person, I hope to contribute my curiosity and energy towards creating
             meaningful work to best serve my community!
           </p>
         </div>
