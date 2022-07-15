@@ -36,7 +36,7 @@ function About(props) {
         <div className="about_bio">
           <h1>about me</h1>
           <p>
-            My name is Elle Louie. Throughout my time at Dartmouth, I have
+            Hi, I&apos;m Elle Louie! Throughout my time at Dartmouth, I have
             cultivated a passion around the creative and collaborative design process. I truly love exploring the intersection between the technical side of engineering
             and the creativity of studio art and have learned the incredible value behind both.
             In addition, my time on the Dartmouth basketball team has taught me the value of vulnerability when serving in a position of leadership
@@ -62,6 +62,10 @@ function About(props) {
         <div className="icons_item">
           <i className="fab fa-html5 fa-border fa-3x" />
           <h4>HTML/CSS</h4>
+        </div>
+        <div className="icons_item">
+          <i className="fab fa-js fa-border fa-3x" />
+          <h4>JavaScript</h4>
         </div>
         <div className="icons_item">
           <i className="fab fa-figma fa-border fa-3x" />
