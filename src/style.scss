@@ -75,6 +75,7 @@ nav {
   text-shadow: none;
 }
 
+
 //adapted from https://stackoverflow.com/questions/51249812/how-to-apply-styles-to-react-burger-menu-button-with-styled-components
 /* Position and sizing of burger button */
 .bm-burger-button {
@@ -926,7 +927,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
     font-size: 0.4em;
   }
 
-  .nav-item {
+  .nav-item-home, .nav-item {
     display: none;
   }
 
@@ -936,5 +937,4 @@ Note: Beware of modifying this element as it can break the animations - you shou
   }
 
 }
-
 
