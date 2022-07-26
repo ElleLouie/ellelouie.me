@@ -5,7 +5,7 @@ function Contact(props) {
     <div className="contact">
       <h1>Get in Touch</h1>
       <h2> Email </h2>
-      <p> ellelouie13@gmail.com </p>
+      <p> elle_louie@comcast.net </p>
       <div className="social_container">
         <h2> Social Media </h2>
         <div className="social">
