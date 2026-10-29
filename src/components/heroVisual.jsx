@@ -7,6 +7,27 @@ const PALETTE = {
   plum: 0x8e5462,
 };
 
+// colour treatments for the pearls shape
+const PEARL_FINISHES = {
+  // real pearl sheen: pale bases with a rainbow shimmer as they turn
+  iridescent: {
+    colors: [0xfaf3ee, 0xf3d9dc, 0xefe4d2, 0xe6dcef, 0xf6e6dc, 0xdfe8ea],
+    material: {
+      roughness: 0.15, clearcoat: 1, clearcoatRoughness: 0.08, iridescence: 1, iridescenceIOR: 1.6, iridescenceThicknessRange: [200, 600], sheen: 0,
+    },
+  },
+  pastel: {
+    colors: [0xf7f0ea, 0xf2b8c6, 0xc9b6e4, 0xf6c9a8, 0xf3e2a0, 0xb9d3c2],
+    material: { roughness: 0.2, clearcoat: 1, clearcoatRoughness: 0.1 },
+  },
+  jewel: {
+    colors: [0xf6efe8, 0x8e2a3e, 0x1f6b57, 0x2d4c8a, 0xc99a3c, 0x6b3d48],
+    material: {
+      roughness: 0.12, metalness: 0.1, clearcoat: 1, clearcoatRoughness: 0.05, sheen: 0,
+    },
+  },
+};
+
 // Each shape returns the object to add to the scene and a per-frame update.
 const shapes = {
   knot(THREE, material) {
@@ -53,15 +74,16 @@ const shapes = {
   },
 
   // a little cluster of glossy pearls that drift
-  pearls(THREE, material) {
+  pearls(THREE, material, variant = 'iridescent') {
     const group = new THREE.Group();
     const layout = [
-      [0, 0, 0, 0.9, PALETTE.cream], [1.25, 0.55, -0.2, 0.55, PALETTE.pink], [-1.1, 0.75, 0.1, 0.48, PALETTE.mauve],
-      [-0.75, -1.05, 0.25, 0.6, PALETTE.pink], [0.95, -0.95, 0.35, 0.38, PALETTE.cream], [0.2, 1.35, 0.4, 0.32, PALETTE.plum],
+      [0, 0, 0, 0.9], [1.25, 0.55, -0.5, 0.55], [-1.1, 0.75, 0.4, 0.48],
+      [-0.75, -1.05, -0.3, 0.6], [0.95, -0.95, 0.6, 0.38], [0.2, 1.35, -0.2, 0.32],
     ];
+    const finish = PEARL_FINISHES[variant] || PEARL_FINISHES.iridescent;
     const sphere = new THREE.SphereGeometry(1, 64, 64);
-    const pearls = layout.map(([x, y, z, r, color]) => {
-      const mesh = new THREE.Mesh(sphere, material(color, { roughness: 0.18, clearcoat: 1, clearcoatRoughness: 0.1 }));
+    const pearls = layout.map(([x, y, z, r], i) => {
+      const mesh = new THREE.Mesh(sphere, material(finish.colors[i % finish.colors.length], finish.material));
       mesh.position.set(x, y, z);
       mesh.scale.setScalar(r);
       group.add(mesh);
@@ -74,6 +96,7 @@ const shapes = {
           mesh.position.y = y + Math.sin(t * 0.8 + i) * 0.08;
         });
       },
+      upright: true,
     };
   },
 
@@ -92,7 +115,7 @@ const shapes = {
       group.add(mesh);
     });
     group.rotation.x = 0.25;
-    return { object: group, update() {}, still: true };
+    return { object: group, update() {}, upright: true };
   },
 };
 
@@ -100,7 +123,7 @@ export const shapeNames = Object.keys(shapes);
 
 // A slowly turning 3D shape, built with Three.js. Three is loaded on demand so it
 // doesn't slow down the first paint; if WebGL isn't available a soft gradient shows instead.
-function HeroVisual({ shape = 'knot' }) {
+function HeroVisual({ shape = 'knot', variant }) {
   const container = useRef(null);
   const [failed, setFailed] = useState(false);
 
@@ -108,7 +131,7 @@ function HeroVisual({ shape = 'knot' }) {
     let cleanup = () => {};
     let cancelled = false;
 
-    import('three').then((THREE) => {
+    Promise.all([import('three'), import('three/examples/jsm/environments/RoomEnvironment.js')]).then(([THREE, { RoomEnvironment }]) => {
       if (cancelled) return;
       const el = container.current;
       let renderer;
@@ -123,6 +146,11 @@ function HeroVisual({ shape = 'knot' }) {
       el.appendChild(renderer.domElement);
 
       const scene = new THREE.Scene();
+      // soft studio reflections, which glossy and iridescent finishes need to shine
+      const pmrem = new THREE.PMREMGenerator(renderer);
+      const environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+      scene.environment = environment;
+      scene.environmentIntensity = 0.3;
       const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
       camera.position.z = 8;
 
@@ -140,11 +168,11 @@ function HeroVisual({ shape = 'knot' }) {
         materials.push(m);
         return m;
       };
-      const { object, update, still: upright } = (shapes[shape] || shapes.knot)(THREE, material);
+      const { object, update, upright } = (shapes[shape] || shapes.knot)(THREE, material, variant);
       scene.add(object);
 
-      scene.add(new THREE.HemisphereLight(0xfbf6f2, PALETTE.plum, 1.6));
-      const key = new THREE.DirectionalLight(0xfff1ea, 2.2);
+      scene.add(new THREE.HemisphereLight(0xfbf6f2, PALETTE.plum, 0.9));
+      const key = new THREE.DirectionalLight(0xfff1ea, 1.8);
       key.position.set(3, 4, 5);
       scene.add(key);
       const rim = new THREE.DirectionalLight(PALETTE.mauve, 1.5);
@@ -198,6 +226,8 @@ function HeroVisual({ shape = 'knot' }) {
         window.removeEventListener('pointermove', onPointer);
         object.traverse((child) => child.geometry?.dispose());
         materials.forEach((m) => m.dispose());
+        environment.dispose();
+        pmrem.dispose();
         renderer.dispose();
         renderer.domElement.remove();
       };
@@ -207,7 +237,7 @@ function HeroVisual({ shape = 'knot' }) {
       cancelled = true;
       cleanup();
     };
-  }, [shape]);
+  }, [shape, variant]);
 
   return <div ref={container} className={failed ? 'hero_visual hero_visual-fallback' : 'hero_visual'} aria-hidden="true" />;
 }

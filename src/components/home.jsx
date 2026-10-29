@@ -6,13 +6,15 @@ import projects from '../data/projects';
 import { facts } from '../data/about';
 import socials, { email } from '../data/socials';
 
-// knot, blob, flower, pearls or pebbles
-const HERO_SHAPE = 'knot';
+// shape: knot, blob, flower, pearls or pebbles
+// finish (pearls only): iridescent, pastel or jewel
+const HERO = { shape: 'pearls', finish: 'pastel' };
 
-function heroShape() {
-  // while developing, try other shapes with ?shape=blob
-  if (import.meta.env.DEV) return new URLSearchParams(window.location.search).get('shape') || HERO_SHAPE;
-  return HERO_SHAPE;
+function heroSettings() {
+  // while developing, try others with ?shape=pearls&finish=pastel
+  if (!import.meta.env.DEV) return HERO;
+  const params = new URLSearchParams(window.location.search);
+  return { shape: params.get('shape') || HERO.shape, finish: params.get('finish') || HERO.finish };
 }
 
 function Home(props) {
@@ -36,7 +38,7 @@ function Home(props) {
             <p className="label">Engineering &middot; Studio art &middot; 3D</p>
           </div>
           <div className="hero_tile">
-            <HeroVisual shape={heroShape()} />
+            <HeroVisual shape={heroSettings().shape} variant={heroSettings().finish} />
           </div>
         </div>
       </section>
