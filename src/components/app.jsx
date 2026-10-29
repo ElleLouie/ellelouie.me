@@ -8,6 +8,7 @@ import Contact from './contact';
 import Portfolio from './portfolio';
 import Project from './project';
 import NotFound from './notFound';
+import Footer from './footer';
 
 function App(props) {
   return (
@@ -23,6 +24,7 @@ function App(props) {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
+      <Footer />
     </Router>
   );
 }

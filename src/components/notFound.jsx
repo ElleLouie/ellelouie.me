@@ -2,9 +2,10 @@ import { NavLink } from 'react-router-dom';
 
 function NotFound(props) {
   return (
-    <div className="not_found">
-      <h1>page not found</h1>
-      <NavLink to="/" className="link">back home</NavLink>
+    <div className="page not_found">
+      <p className="eyebrow">404</p>
+      <h1 className="page_title">Page <em>not found</em></h1>
+      <NavLink to="/" className="button">Back home</NavLink>
     </div>
   );
 }

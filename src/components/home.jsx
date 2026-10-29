@@ -1,35 +1,43 @@
 import { NavLink } from 'react-router-dom';
 
+const sections = [
+  { to: '/about', number: '01', title: 'About', detail: 'Who I am, how I work, and what I bring to a team.' },
+  { to: '/portfolio', number: '02', title: 'Work', detail: 'Selected projects across product design, engineering and studio art.' },
+  { to: '/contact', number: '03', title: 'Contact', detail: 'Say hello. I\'m always up for a good conversation.' },
+];
+
 function Home(props) {
   return (
     <div className="home">
-      <h1>el</h1>
-      <div className="name">
-        <span>e</span>
-        <span>l</span>
-        <span>l</span>
-        <span>e</span>
-        <span> </span>
-        <span>l</span>
-        <span>o</span>
-        <span>u</span>
-        <span>i</span>
-        <span>e</span>
-      </div>
-      <div className="line" />
-      <div className="home_nav">
-        <NavLink to="/about" className="nav-item-home">about</NavLink>
-        <NavLink to="/portfolio" className="nav-item-home">portfolio</NavLink>
-        <NavLink to="/contact" className="nav-item-home">contact</NavLink>
-      </div>
-      <div className="flower_container">
-        <div className="flower__head" />
-      </div>
-      <div className="home_social">
-        <a href="https://www.linkedin.com/in/elle-louie-7920a5193/" aria-label="LinkedIn"> <i className="fa-brands fa-linkedin" /></a>
-        <a href="https://www.facebook.com/elle.louie" aria-label="Facebook"> <i className="fa-brands fa-facebook" /></a>
-        <a href="https://github.com/ElleLouie" aria-label="GitHub"> <i className="fa-brands fa-github" /></a>
-      </div>
+      <section className="hero">
+        <p className="eyebrow">Designer &amp; Engineer</p>
+        <h1 className="hero_title">
+          Elle <em>Louie</em>
+        </h1>
+        <div className="hero_bottom">
+          <p className="hero_lead">
+            I work where engineering and studio art overlap, designing things that work well <em>and</em> feel good to use.
+          </p>
+          <div className="flower" aria-hidden="true" />
+        </div>
+      </section>
+      <section className="index">
+        <div className="index_inner">
+          <p className="eyebrow">Index</p>
+          <ul className="index_list">
+            {sections.map(({ to, number, title, detail }) => (
+              <li key={to}>
+                <NavLink to={to} className="index_row">
+                  <span className="index_number">{number}</span>
+                  <span className="index_title">{title}</span>
+                  <span className="index_detail">{detail}</span>
+                  <span className="index_arrow" aria-hidden="true">&rarr;</span>
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
     </div>
   );
 }

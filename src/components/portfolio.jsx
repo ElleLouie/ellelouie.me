@@ -3,39 +3,33 @@ import projects from '../data/projects';
 
 function Portfolio(props) {
   return (
-    <div className="portfolio">
-      <div className="name about_name">
-        <span>e</span>
-        <span>l</span>
-        <span>l</span>
-        <span>e</span>
-        <span> </span>
-        <span>l</span>
-        <span>o</span>
-        <span>u</span>
-        <span>i</span>
-        <span>e</span>
-      </div>
+    <div className="page portfolio">
+      <header className="page_header">
+        <p className="eyebrow">02 &mdash; Work</p>
+        <h1 className="page_title">Selected <em>work</em></h1>
+      </header>
       {projects.length === 0 ? (
-        <p className="portfolio_empty">new work coming soon</p>
+        <div className="portfolio_empty">
+          <p className="eyebrow">In progress</p>
+          <p className="lead">New projects are on the way. <em>Check back soon.</em></p>
+        </div>
       ) : (
-        <>
-          <h3>click to see more</h3>
-          <div className="portfolio_grid">
-            {projects.map((project) => (
-              <NavLink key={project.slug} to={`/portfolio/${project.slug}`} className="card">
-                <img src={project.cover} alt={project.title} loading="lazy" />
-                <div className="img__description">
-                  <h2>{project.title}</h2>
-                  <div className="white_line" />
-                  <div className="img_tools_container">
-                    {project.tools.map((tool) => <p key={tool} className="img_tools">{tool}</p>)}
-                  </div>
-                </div>
-              </NavLink>
-            ))}
-          </div>
-        </>
+        <div className="portfolio_grid">
+          {projects.map((project, i) => (
+            <NavLink key={project.slug} to={`/portfolio/${project.slug}`} className="card">
+              <div className="card_image">
+                <img src={project.cover} alt="" loading="lazy" />
+              </div>
+              <div className="card_meta">
+                <span className="index_number">{String(i + 1).padStart(2, '0')}</span>
+                <h2>{project.title}</h2>
+              </div>
+              <div className="tags">
+                {project.tools.map((tool) => <span key={tool} className="tag">{tool}</span>)}
+              </div>
+            </NavLink>
+          ))}
+        </div>
       )}
     </div>
   );
