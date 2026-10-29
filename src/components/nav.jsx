@@ -1,34 +1,19 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const links = [
-  { to: '/about', label: 'About' },
-  { to: '/portfolio', label: 'Work' },
-  { to: '/contact', label: 'Contact' },
+  { to: '/#work', label: 'Projects' },
+  { to: '/#about', label: 'About' },
+  { to: '/#contact', label: 'Contact' },
 ];
 
 function Nav(props) {
-  const [open, setOpen] = useState(false);
-  const close = () => setOpen(false);
-
   return (
-    <header className={open ? 'site_header nav_open' : 'site_header'}>
+    <header className="site_header">
       <nav>
-        <NavLink to="/" className="nav-logo" end onClick={close}>
-          Elle <em>Louie</em>
-        </NavLink>
-        <button
-          type="button"
-          className="nav-toggle"
-          aria-expanded={open}
-          aria-controls="nav-links"
-          onClick={() => setOpen(!open)}
-        >
-          {open ? 'Close' : 'Menu'}
-        </button>
-        <div id="nav-links" className="nav-links">
+        <Link to="/" className="nav-logo">Elle <em>Louie</em></Link>
+        <div className="nav-links">
           {links.map(({ to, label }) => (
-            <NavLink key={to} to={to} className="nav-item" onClick={close}>{label}</NavLink>
+            <Link key={to} to={to} className="nav-item">{label}</Link>
           ))}
         </div>
       </nav>

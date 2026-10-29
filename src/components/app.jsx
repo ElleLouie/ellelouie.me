@@ -1,11 +1,8 @@
 import {
-  BrowserRouter as Router, Route, Routes,
+  BrowserRouter as Router, Navigate, Route, Routes,
 } from 'react-router-dom';
 import Home from './home';
 import Nav from './nav';
-import About from './about';
-import Contact from './contact';
-import Portfolio from './portfolio';
 import Project from './project';
 import NotFound from './notFound';
 import Footer from './footer';
@@ -17,9 +14,9 @@ function App(props) {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/about" element={<Navigate to="/#about" replace />} />
+          <Route path="/contact" element={<Navigate to="/#contact" replace />} />
+          <Route path="/portfolio" element={<Navigate to="/#work" replace />} />
           <Route path="/portfolio/:slug" element={<Project />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

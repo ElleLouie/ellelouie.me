@@ -13,6 +13,11 @@ npm run dev
 - `npm run preview` serves the production build
 - `npm run lint` checks the code with ESLint
 
-## Adding a project
+## Editing content
 
-Projects live in `src/data/projects.js`. Put the images in `src/img/<slug>/`, import them in that file, and add an entry. The comment at the top of the file shows the fields. Each project gets a card on `/portfolio` and its own page at `/portfolio/<slug>`.
+The site is one page (projects, about, contact) plus a page per project.
+
+- **Projects:** `src/data/projects.js`. Put images in `src/img/<slug>/`, import them there, and add an entry (the comment at the top shows the fields). A project without a `cover` shows as "coming soon".
+- **Interests:** `src/data/about.js`
+- **Email and links:** `src/data/socials.js`
+- **Project ideas to build next:** `docs/project-ideas.md`

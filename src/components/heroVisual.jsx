@@ -30,7 +30,7 @@ function HeroVisual(props) {
 
       const geometry = new THREE.TorusKnotGeometry(1.2, 0.38, 260, 40, 2, 3);
       const material = new THREE.MeshPhysicalMaterial({
-        color: 0xd9a3a8,
+        color: 0xe0aaa6,
         roughness: 0.5,
         clearcoat: 0.4,
         clearcoatRoughness: 0.6,
