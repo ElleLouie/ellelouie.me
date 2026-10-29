@@ -17,13 +17,8 @@
 // Leave out `cover` to show the card as "coming soon".
 // More ideas we plan to build are in docs/project-ideas.md.
 
-const projects = [
-  {
-    slug: 'mini-apartment',
-    title: 'Mini Apartment',
-    medium: 'Blender',
-    note: 'A tiny apartment, modeled and styled down to the throw pillows.',
-  },
-];
+// Empty for now: the site shows "coming soon" until a project is added.
+// First up is the Blender mini apartment (see docs/project-ideas.md).
+const projects = [];
 
 export default projects;

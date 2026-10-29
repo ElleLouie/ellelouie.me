@@ -15,12 +15,12 @@ function Project(props) {
 
   return (
     <article className="page project">
-      <Link to="/#work" className="back_link">&larr; all projects</Link>
-      <p className="card_medium">{project.medium}</p>
+      <Link to="/#work" className="back_link label">&larr; All projects</Link>
+      <p className="label">{project.medium}</p>
       <h1 className="page_title">{project.title}</h1>
       <p className="lead">{project.note}</p>
       {project.link && (
-        <a href={project.link.href} className="button" target="_blank" rel="noreferrer">{project.link.label}</a>
+        <a href={project.link.href} className="button label" target="_blank" rel="noreferrer">{project.link.label}</a>
       )}
       <div className="project_images">
         {[project.cover, ...(project.images || [])].map((src, i) => (

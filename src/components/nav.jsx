@@ -10,10 +10,10 @@ function Nav(props) {
   return (
     <header className="site_header">
       <nav>
-        <Link to="/" className="nav-logo">Elle <em>Louie</em></Link>
+        <Link to="/" className="nav-logo">elle <em>louie</em></Link>
         <div className="nav-links">
           {links.map(({ to, label }) => (
-            <Link key={to} to={to} className="nav-item">{label}</Link>
+            <Link key={to} to={to} className="nav-item label">{label}</Link>
           ))}
         </div>
       </nav>

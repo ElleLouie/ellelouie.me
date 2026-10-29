@@ -1,3 +1,5 @@
-export const interests = [
-  'Surfing', 'Golf', 'Tennis', 'Basketball', 'Blender & 3D', 'Printmaking', 'Trying new food', 'Meeting new people',
+export const facts = [
+  { label: 'Now', value: 'Software engineer, Treering' },
+  { label: 'Studied', value: 'Engineering & studio art, Dartmouth' },
+  { label: 'Loves', value: 'Surfing, golf, tennis, good food, 3D & printmaking' },
 ];
