@@ -1,13 +1,18 @@
-# Title
+# ellelouie.me
 
-*description*
+Elle Louie's personal portfolio site, built with React, React Router and Vite.
 
-[deployed url](http://url-if-deployed-here)
+## Running locally
 
-## What Worked Well
+```bash
+npm install
+npm run dev
+```
 
-## What Didn't
+- `npm run build` builds the site into `dist/` (including `CNAME` and `_redirects` from `public/`)
+- `npm run preview` serves the production build
+- `npm run lint` checks the code with ESLint
 
-## Extra Credit
+## Adding a project
 
-## Screenshots
+Projects live in `src/data/projects.js`. Put the images in `src/img/<slug>/`, import them in that file, and add an entry. The comment at the top of the file shows the fields. Each project gets a card on `/portfolio` and its own page at `/portfolio/<slug>`.
