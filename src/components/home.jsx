@@ -7,8 +7,8 @@ import { facts } from '../data/about';
 import socials, { email } from '../data/socials';
 
 // shape: knot, blob, flower, pearls or pebbles
-// finish (pearls only): iridescent, pastel or jewel
-const HERO = { shape: 'pearls', finish: 'pastel' };
+// finish (pearls only): metallic, iridescent, pastel or jewel
+const HERO = { shape: 'pearls', finish: 'metallic' };
 
 function heroSettings() {
   // while developing, try others with ?shape=pearls&finish=pastel

@@ -8,7 +8,21 @@ const PALETTE = {
 };
 
 // colour treatments for the pearls shape
+const SILVER = {
+  color: 0xf2f2f5, metalness: 1, roughness: 0.12, clearcoat: 0, sheen: 0, envMapIntensity: 1.6,
+};
+const CHAMPAGNE = {
+  color: 0xf1e4cc, metalness: 1, roughness: 0.2, clearcoat: 0, sheen: 0, envMapIntensity: 1.6,
+};
+const CREAM = {
+  color: 0xf6eee2, roughness: 0.22, clearcoat: 1, clearcoatRoughness: 0.08, sheen: 0,
+};
+
 const PEARL_FINISHES = {
+  // chrome silver and champagne mixed with glossy cream pearls
+  metallic: {
+    colors: [CREAM, SILVER, CREAM, SILVER, CHAMPAGNE, SILVER],
+  },
   // real pearl sheen: pale bases with a rainbow shimmer as they turn
   iridescent: {
     colors: [0xfaf3ee, 0xf3d9dc, 0xefe4d2, 0xe6dcef, 0xf6e6dc, 0xdfe8ea],
@@ -74,16 +88,19 @@ const shapes = {
   },
 
   // a little cluster of glossy pearls that drift
-  pearls(THREE, material, variant = 'iridescent') {
+  pearls(THREE, material, variant = 'metallic') {
     const group = new THREE.Group();
     const layout = [
       [0, 0, 0, 0.9], [1.25, 0.55, -0.5, 0.55], [-1.1, 0.75, 0.4, 0.48],
       [-0.75, -1.05, -0.3, 0.6], [0.95, -0.95, 0.6, 0.38], [0.2, 1.35, -0.2, 0.32],
     ];
-    const finish = PEARL_FINISHES[variant] || PEARL_FINISHES.iridescent;
+    const finish = PEARL_FINISHES[variant] || PEARL_FINISHES.metallic;
     const sphere = new THREE.SphereGeometry(1, 64, 64);
     const pearls = layout.map(([x, y, z, r], i) => {
-      const mesh = new THREE.Mesh(sphere, material(finish.colors[i % finish.colors.length], finish.material));
+      // an entry is either a colour or a full set of material settings
+      const entry = finish.colors[i % finish.colors.length];
+      const { color, ...overrides } = typeof entry === 'number' ? { color: entry } : entry;
+      const mesh = new THREE.Mesh(sphere, material(color, { ...finish.material, ...overrides }));
       mesh.position.set(x, y, z);
       mesh.scale.setScalar(r);
       group.add(mesh);
@@ -165,6 +182,8 @@ function HeroVisual({ shape = 'knot', variant }) {
           sheenColor: new THREE.Color(PALETTE.cream),
           ...overrides,
         });
+        // metals get their own, brighter copy of the reflections
+        if (overrides.envMapIntensity) m.envMap = environment;
         materials.push(m);
         return m;
       };
