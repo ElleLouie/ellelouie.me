@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import projects from '../data/projects';
+import ProjectCover from './projectCover';
 
 function Portfolio(props) {
   return (
@@ -18,10 +19,10 @@ function Portfolio(props) {
           {projects.map((project, i) => (
             <NavLink key={project.slug} to={`/portfolio/${project.slug}`} className="card">
               <div className="card_image">
-                <img src={project.cover} alt="" loading="lazy" />
+                {project.cover ? <img src={project.cover} alt="" loading="lazy" /> : <ProjectCover index={i} />}
               </div>
               <div className="card_meta">
-                <span className="index_number">{String(i + 1).padStart(2, '0')}</span>
+                {project.context && <p className="eyebrow">{project.context}</p>}
                 <h2>{project.title}</h2>
               </div>
               <div className="tags">

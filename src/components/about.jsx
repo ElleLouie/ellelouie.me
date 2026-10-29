@@ -1,14 +1,74 @@
 const facts = [
+  { label: 'Currently', value: 'Software Engineer at Treering' },
   { label: 'Based in', value: 'California' },
-  { label: 'Education', value: 'Dartmouth College' },
-  { label: 'Study', value: 'Engineering modified with studio art, CS minor' },
+  { label: 'Education', value: 'Dartmouth College, B.A. Engineering modified with Studio Art, minor in Computer Science, 2021' },
+];
+
+const experience = [
+  {
+    role: 'Software Engineer',
+    org: 'Treering, San Mateo',
+    dates: 'Mar 2024 – Present',
+    points: [
+      'Primary engineer on multiple Marketplace initiatives, including the launch of a new ecommerce product line.',
+      'Built interactive 3D product renderings with Three.js for real-time customization and preview.',
+      'Developed full-stack infrastructure for a white-label storefront platform using Angular, PHP and AWS.',
+      'Contributed core features to AIBB (AI Book Builder), using AWS Lambda, SQS and OpenSearch for smart cropping and layout suggestions.',
+    ],
+  },
+  {
+    role: 'Software Engineer Intern',
+    org: 'Treering, San Mateo',
+    dates: 'Sep 2023 – Mar 2024',
+    points: [
+      'Reduced global CSS and SCSS bloat by 16% through modularization and palette standardization.',
+      'Worked across a LAMP stack (MySQL, PHP) and front-end development with Angular and TypeScript.',
+    ],
+  },
 ];
 
 const skills = [
-  { label: 'Code', value: ['Java', 'Python', 'JavaScript', 'React', 'HTML/CSS'] },
-  { label: 'Design', value: ['Figma', 'Photoshop', 'Illustrator'] },
-  { label: 'CAD', value: ['Rhino', 'SolidWorks'] },
+  { label: 'Languages', value: ['JavaScript', 'TypeScript', 'Java', 'Python', 'PHP', 'C', 'HTML/CSS'] },
+  { label: 'Frameworks', value: ['Angular', 'React', 'Three.js'] },
+  { label: 'Cloud', value: ['AWS EC2', 'SQS', 'Auto Scaling Groups', 'Launch Templates', 'MySQL'] },
+  { label: 'AI & Imaging', value: ['Smart layout generation', 'AWS Rekognition', 'OpenSearch'] },
+  { label: 'Design', value: ['Figma', 'Adobe Suite', 'SolidWorks', 'Rhino'] },
+  { label: 'Process', value: ['Agile/Scrum', 'Cross-functional collaboration', 'Git'] },
 ];
+
+const leadership = [
+  {
+    role: 'Board Member, Young Alumni',
+    org: 'Dartmouth Club of Los Angeles',
+    dates: '2023 – Present',
+    points: ['Organize alumni events and community service outreach in Los Angeles.'],
+  },
+  {
+    role: 'Division 1 Women\'s Basketball',
+    org: 'Dartmouth Athletics',
+    dates: '2017 – 2021',
+    points: ['Balanced 20+ hours a week of athletics with a full academic workload.'],
+  },
+];
+
+function Timeline({ items }) {
+  return (
+    <ol className="timeline">
+      {items.map(({ role, org, dates, points }) => (
+        <li key={role} className="timeline_item">
+          <div className="timeline_head">
+            <h3>{role}</h3>
+            <span className="timeline_dates">{dates}</span>
+          </div>
+          <p className="timeline_org">{org}</p>
+          <ul>
+            {points.map((point) => <li key={point}>{point}</li>)}
+          </ul>
+        </li>
+      ))}
+    </ol>
+  );
+}
 
 function About(props) {
   return (
@@ -52,6 +112,11 @@ function About(props) {
       </section>
 
       <section className="split">
+        <p className="split_label eyebrow">Experience</p>
+        <Timeline items={experience} />
+      </section>
+
+      <section className="split">
         <p className="split_label eyebrow">Skills</p>
         <dl className="table">
           {skills.map(({ label, value }) => (
@@ -61,6 +126,11 @@ function About(props) {
             </div>
           ))}
         </dl>
+      </section>
+
+      <section className="split">
+        <p className="split_label eyebrow">Leadership</p>
+        <Timeline items={leadership} />
       </section>
 
       <section className="split">

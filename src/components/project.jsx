@@ -1,6 +1,7 @@
 import { NavLink, useParams } from 'react-router-dom';
 import projects from '../data/projects';
 import NotFound from './notFound';
+import ProjectCover from './projectCover';
 
 function Project(props) {
   const { slug } = useParams();
@@ -13,6 +14,7 @@ function Project(props) {
       <header className="page_header">
         <NavLink to="/portfolio" className="eyebrow back_link">&larr; All work</NavLink>
         <h1 className="page_title">{project.title}</h1>
+        {project.context && <p className="project_context">{project.context}</p>}
         <div className="tags">
           {project.tools.map((tool) => <span key={tool} className="tag">{tool}</span>)}
         </div>
@@ -26,8 +28,13 @@ function Project(props) {
           )}
         </div>
       </section>
+      {!project.images?.length && (
+        <div className="project_banner">
+          {project.cover ? <img src={project.cover} alt="" /> : <ProjectCover index={projects.indexOf(project)} />}
+        </div>
+      )}
       <div className="project_images">
-        {project.images.map((src, i) => (
+        {(project.images || []).map((src, i) => (
           <img key={src} src={src} alt={`${project.title} ${i + 1}`} loading="lazy" />
         ))}
       </div>

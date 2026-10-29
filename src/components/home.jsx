@@ -1,8 +1,9 @@
 import { NavLink } from 'react-router-dom';
+import HeroVisual from './heroVisual';
 
 const sections = [
-  { to: '/about', number: '01', title: 'About', detail: 'Who I am, how I work, and what I bring to a team.' },
-  { to: '/portfolio', number: '02', title: 'Work', detail: 'Selected projects across product design, engineering and studio art.' },
+  { to: '/about', number: '01', title: 'About', detail: 'Experience, skills, and how I like to work.' },
+  { to: '/portfolio', number: '02', title: 'Work', detail: 'Selected projects in 3D, AI-enhanced tooling and ecommerce.' },
   { to: '/contact', number: '03', title: 'Contact', detail: 'Say hello. I\'m always up for a good conversation.' },
 ];
 
@@ -10,15 +11,22 @@ function Home(props) {
   return (
     <div className="home">
       <section className="hero">
-        <p className="eyebrow">Designer &amp; Engineer</p>
-        <h1 className="hero_title">
-          Elle <em>Louie</em>
-        </h1>
+        <div className="hero_text">
+          <p className="eyebrow">Software Engineer</p>
+          <h1 className="hero_title">
+            Elle <em>Louie</em>
+          </h1>
+        </div>
+        <HeroVisual />
         <div className="hero_bottom">
           <p className="hero_lead">
-            I work where engineering and studio art overlap, designing things that work well <em>and</em> feel good to use.
+            Full-stack engineer with a front-end focus. I build products people can see and touch,
+            from real-time 3D previews to <em>AI-assisted</em> design tools.
           </p>
-          <div className="flower" aria-hidden="true" />
+          <p className="hero_now">
+            <span className="eyebrow">Currently</span>
+            Software Engineer at Treering
+          </p>
         </div>
       </section>
       <section className="index">
