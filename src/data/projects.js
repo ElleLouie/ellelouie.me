@@ -23,8 +23,8 @@
 import roomImg from '../img/mini-apartment/room.webp';
 import deskImg from '../img/mini-apartment/desk.webp';
 import cornerImg from '../img/mini-apartment/corner.webp';
-import miseImg from '../img/mise/home.webp';
-import miseCookImg from '../img/mise/cook.webp';
+import miseImg from '../img/mise/cover.webp';
+import miseHomeImg from '../img/mise/home.webp';
 import miseTableImg from '../img/mise/table.webp';
 
 const projects = [
@@ -35,6 +35,7 @@ const projects = [
     note: 'A tiny room of things I love, modeled and rendered in Blender.',
     cover: roomImg,
     images: [deskImg, cornerImg],
+    model: '/models/apartment.glb',
   },
   {
     slug: 'mise',
@@ -42,7 +43,7 @@ const projects = [
     medium: 'React app',
     note: 'A recipe app that plans the week, knows what’s in your kitchen, and cooks with you step by step.',
     cover: miseImg,
-    images: [miseCookImg, miseTableImg],
+    images: [miseHomeImg, miseTableImg],
     link: { href: 'https://github.com/ElleLouie/mise', label: 'View the code' },
   },
 ];

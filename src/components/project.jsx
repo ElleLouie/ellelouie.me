@@ -1,19 +1,23 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import projects from '../data/projects';
 import NotFound from './notFound';
 import RoomViewer from './roomViewer';
 import FoodJournal from './foodJournal';
+import Lightbox from './lightbox';
 
 function Project(props) {
   const { slug } = useParams();
   const project = projects.find((p) => p.slug === slug && p.cover);
+  const [open, setOpen] = useState(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
 
   if (!project) return <NotFound />;
+
+  const gallery = [project.cover, ...(project.images || [])];
 
   return (
     <article className="page project">
@@ -33,11 +37,16 @@ function Project(props) {
       {project.model && <RoomViewer src={project.model} poster={project.cover} alt={project.title} />}
       {project.feature === 'journal' && <FoodJournal />}
       {!project.feature && (
-        <div className="collage">
-          {[project.cover, ...(project.images || [])].map((src, i) => (
-            <img key={src} src={src} alt={`${project.title} ${i + 1}`} loading={i ? 'lazy' : 'eager'} className={`collage_item collage_item-${i % 3}`} />
+        <div className="gallery">
+          {gallery.map((src, i) => (
+            <button key={src} type="button" className="gallery_item" onClick={() => setOpen(i)} aria-label={`View image ${i + 1} larger`}>
+              <img src={src} alt={`${project.title} ${i + 1}`} loading={i ? 'lazy' : 'eager'} />
+            </button>
           ))}
         </div>
+      )}
+      {open !== null && (
+        <Lightbox images={gallery} index={open} alt={project.title} onChange={setOpen} onClose={() => setOpen(null)} />
       )}
     </article>
   );
