@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 
-// A gentle colour grade applied to the baked textures: richer colour, with the
-// brightest areas rolled off so sunlit walls keep their detail instead of going white.
+// A colour grade applied to the baked textures: slightly lower and warmer exposure,
+// richer colour, and the brightest areas rolled off so sunlit walls don't read as pure white.
 const gradeShader = (shader) => {
   shader.fragmentShader = shader.fragmentShader.replace('#include <map_fragment>', `
     #include <map_fragment>
+    diffuseColor.rgb *= 0.88 * vec3(1.03, 1.0, 0.96);
     float luma = dot(diffuseColor.rgb, vec3(0.2126, 0.7152, 0.0722));
     diffuseColor.rgb = mix(vec3(luma), diffuseColor.rgb, 1.25);
-    diffuseColor.rgb *= 1.0 - 0.22 * smoothstep(0.45, 1.0, luma);
+    diffuseColor.rgb *= 1.0 - 0.3 * smoothstep(0.3, 0.9, luma);
   `);
 };
 
