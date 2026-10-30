@@ -13,6 +13,7 @@
 //   images: [detail1],
 //   link: { href: 'https://example.com', label: 'see it live' },
 //   model: '/models/my-project.glb', // optional: a baked .glb shown as an interactive 3D view
+//   feature: 'journal',               // optional: show an interactive piece instead of a gallery
 // },
 //
 // More ideas we plan to build are in docs/project-ideas.md.
@@ -20,6 +21,7 @@
 import roomImg from '../img/mini-apartment/room.webp';
 import deskImg from '../img/mini-apartment/desk.webp';
 import cornerImg from '../img/mini-apartment/corner.webp';
+import journalImg from '../img/food-journal/cover.webp';
 
 const projects = [
   {
@@ -29,6 +31,14 @@ const projects = [
     note: 'A tiny room of things I love, modeled and rendered in Blender.',
     cover: roomImg,
     images: [deskImg, cornerImg],
+  },
+  {
+    slug: 'food-journal',
+    title: 'Food Journal',
+    medium: 'Painting & code',
+    note: 'A sketchbook of meals I love and things I cook, painted as I go.',
+    cover: journalImg,
+    feature: 'journal',
   },
 ];
 

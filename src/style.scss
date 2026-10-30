@@ -10,6 +10,7 @@
 
   --serif: 'Bodoni Moda', 'Didot', Georgia, serif;
   --sans: 'DM Sans', system-ui, sans-serif;
+  --hand: 'Caveat', cursive;
 
   --gutter: clamp(16px, 5vw, 64px);
   --max: 1200px;
@@ -356,16 +357,15 @@ nav {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
-  gap: 64px 32px;
-  // the first project is featured across the full width
-  > :first-child {
-    grid-column: 1 / -1;
-  }
+  gap: clamp(56px, 8vw, 104px);
 }
 
+// every project is a wide card; the image alternates sides down the page
 .card {
-  display: block;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
   text-decoration: none;
   .label {
     color: var(--muted);
@@ -376,27 +376,22 @@ nav {
   }
 }
 
-.cards > :first-child .card {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: clamp(24px, 4vw, 56px);
-  align-items: center;
+.cards > :nth-child(even) .card {
+  grid-template-columns: 1fr 1.5fr;
+  .card_frame {
+    order: 2;
+  }
 }
 
 .card_frame {
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  margin-bottom: 18px;
   background: var(--pink);
   img {
     height: 100%;
     object-fit: cover;
     transition: transform 700ms ease;
   }
-}
-
-.cards > :first-child .card_frame {
-  margin-bottom: 0;
 }
 
 .card_note {
@@ -644,6 +639,301 @@ nav {
   }
 }
 
+// FOOD JOURNAL: a sketchbook whose leaves turn in 3D
+.journal {
+  margin: clamp(24px, 5vw, 64px) 0;
+}
+
+.journal_book {
+  position: relative;
+  width: min(100%, 980px);
+  aspect-ratio: 3 / 2;
+  margin: 0 auto;
+  perspective: 2600px;
+  transition: transform 900ms ease;
+  outline: none;
+}
+
+// keep the closed book centred
+.journal_book-closed {
+  transform: translateX(-25%);
+}
+
+.journal_book-finished {
+  transform: translateX(25%);
+}
+
+.journal_leaf {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 900ms cubic-bezier(0.45, 0.05, 0.25, 1);
+}
+
+.journal_leaf-flipped {
+  transform: rotateY(-180deg);
+}
+
+.journal_page {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  backface-visibility: hidden;
+  cursor: pointer;
+  background: #fbf6ee;
+  // soft shading towards the spine
+  background-image: linear-gradient(to right, rgba(107, 61, 72, 0.12), rgba(107, 61, 72, 0) 12%);
+  box-shadow: 0 30px 60px -30px rgba(107, 61, 72, 0.45);
+  border-radius: 2px 6px 6px 2px;
+}
+
+.journal_page-back {
+  transform: rotateY(180deg);
+  background-image: linear-gradient(to left, rgba(107, 61, 72, 0.12), rgba(107, 61, 72, 0) 12%);
+  border-radius: 6px 2px 2px 6px;
+}
+
+.journal_page-cover {
+  background: var(--plum);
+  background-image: none;
+}
+
+.journal_cover {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--pink);
+  // a little label stuck on the cover
+  h3 {
+    background: var(--cream);
+    color: var(--plum);
+    padding: 20px 36px;
+    font-size: clamp(30px, 4vw, 48px);
+    box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.5);
+    em {
+      color: var(--plum);
+    }
+  }
+}
+
+.journal_intro {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 12%;
+  text-align: center;
+  .journal_hand {
+    font-size: clamp(26px, 3vw, 36px);
+  }
+  .label {
+    color: var(--muted);
+  }
+}
+
+.journal_hand {
+  font-family: var(--hand);
+  font-size: 22px;
+  line-height: 1.25;
+  color: #4a3530;
+  margin: 0;
+}
+
+.journal_notes {
+  position: relative;
+  height: 100%;
+  padding: 9% 10%;
+  display: flex;
+  flex-direction: column;
+  .label {
+    color: var(--muted);
+  }
+}
+
+.journal_title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(26px, 3vw, 38px);
+  line-height: 1.05;
+  color: var(--plum);
+  margin: 4px 0 8px;
+}
+
+.journal_date {
+  color: var(--muted);
+}
+
+.journal_meta {
+  margin-bottom: 20px;
+}
+
+.journal_note {
+  font-size: clamp(22px, 2.4vw, 28px);
+}
+
+.journal_list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  li::before {
+    content: '\2014  ';
+    color: var(--mauve);
+  }
+}
+
+.journal_steps {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 15px;
+  line-height: 1.5;
+  li {
+    margin-bottom: 4px;
+  }
+}
+
+// rubber stamp in place of a star rating
+.journal_stamp {
+  position: absolute;
+  right: 9%;
+  bottom: 9%;
+  padding: 8px 14px;
+  border: 2px solid var(--plum);
+  border-radius: 6px;
+  color: var(--plum);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transform: rotate(-8deg);
+  opacity: 0.75;
+  mix-blend-mode: multiply;
+}
+
+.journal_contents {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  button {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    width: 100%;
+    padding: 8px 0;
+    border: none;
+    border-bottom: 1px dashed var(--pink);
+    background: none;
+    cursor: pointer;
+    text-align: left;
+    .label {
+      width: 56px;
+      flex-shrink: 0;
+    }
+  }
+  button:hover .journal_hand {
+    color: var(--plum);
+  }
+}
+
+.journal_art {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10%;
+  img, .journal_placeholder {
+    width: 100%;
+    max-height: 80%;
+    object-fit: contain;
+  }
+}
+
+.journal_caption {
+  color: var(--muted);
+  transform: rotate(-3deg);
+}
+
+// washi tape
+.journal_tape {
+  position: absolute;
+  z-index: 1;
+  width: 26%;
+  height: 26px;
+  background: repeating-linear-gradient(45deg, rgba(232, 200, 203, 0.85) 0 8px, rgba(243, 223, 224, 0.85) 8px 16px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.journal_tape-left {
+  top: 14%;
+  left: 8%;
+  transform: rotate(-12deg);
+}
+
+.journal_tape-right {
+  bottom: 14%;
+  right: 8%;
+  transform: rotate(-10deg);
+  background: repeating-linear-gradient(45deg, rgba(201, 160, 168, 0.75) 0 8px, rgba(222, 196, 200, 0.75) 8px 16px);
+}
+
+.journal_controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  margin-top: 28px;
+  color: var(--muted);
+  button {
+    background: none;
+    border: none;
+    color: var(--plum);
+    cursor: pointer;
+    padding: 8px 4px;
+  }
+  button:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+}
+
+// phones: a single page
+.journal_single_page {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 4px;
+  touch-action: pan-y;
+  animation: journal-in 400ms ease;
+}
+
+@keyframes journal-in {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .journal_leaf, .journal_book {
+    transition: none;
+  }
+  .journal_single_page {
+    animation: none;
+  }
+}
+
 @media only screen and (max-width: 720px) {
   .nav-logo {
     font-size: 19px;
@@ -701,9 +991,12 @@ nav {
     height: min(100vw, 70vh);
   }
 
-  .cards > :first-child .card {
+  .card, .cards > :nth-child(even) .card {
     grid-template-columns: 1fr;
     gap: 18px;
+    .card_frame {
+      order: 0;
+    }
   }
 
   .collage_item-0 {
