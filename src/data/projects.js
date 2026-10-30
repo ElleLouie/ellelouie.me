@@ -17,11 +17,15 @@
 // },
 //
 // More ideas we plan to build are in docs/project-ideas.md.
+// The food journal (components/foodJournal.jsx, data/journal.js) is built but not listed yet;
+// add an entry with feature: 'journal' to show it.
 
 import roomImg from '../img/mini-apartment/room.webp';
 import deskImg from '../img/mini-apartment/desk.webp';
 import cornerImg from '../img/mini-apartment/corner.webp';
-import journalImg from '../img/food-journal/cover.webp';
+import miseImg from '../img/mise/home.webp';
+import miseCookImg from '../img/mise/cook.webp';
+import miseTableImg from '../img/mise/table.webp';
 
 const projects = [
   {
@@ -33,12 +37,13 @@ const projects = [
     images: [deskImg, cornerImg],
   },
   {
-    slug: 'food-journal',
-    title: 'Food Journal',
-    medium: 'Painting & code',
-    note: 'A sketchbook of meals I love and things I cook, painted as I go.',
-    cover: journalImg,
-    feature: 'journal',
+    slug: 'mise',
+    title: 'mise',
+    medium: 'React app',
+    note: 'A recipe app that plans the week, knows what’s in your kitchen, and cooks with you step by step.',
+    cover: miseImg,
+    images: [miseCookImg, miseTableImg],
+    link: { href: 'https://github.com/ElleLouie/mise', label: 'View the code' },
   },
 ];
 
