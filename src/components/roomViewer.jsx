@@ -1,5 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 
+// A gentle colour grade applied to the baked textures: richer colour, with the
+// brightest areas rolled off so sunlit walls keep their detail instead of going white.
+const gradeShader = (shader) => {
+  shader.fragmentShader = shader.fragmentShader.replace('#include <map_fragment>', `
+    #include <map_fragment>
+    float luma = dot(diffuseColor.rgb, vec3(0.2126, 0.7152, 0.0722));
+    diffuseColor.rgb = mix(vec3(luma), diffuseColor.rgb, 1.25);
+    diffuseColor.rgb *= 1.0 - 0.22 * smoothstep(0.45, 1.0, luma);
+  `);
+};
+
 // Interactive view of a baked .glb room. The lighting is baked into the textures,
 // so every material is shown unlit, exactly as it came out of Blender.
 function RoomViewer({ src, poster, alt }) {
@@ -73,6 +84,7 @@ function RoomViewer({ src, poster, alt }) {
           const { map } = child.material;
           child.material.dispose();
           child.material = new THREE.MeshBasicMaterial({ map, side: THREE.DoubleSide });
+          child.material.onBeforeCompile = gradeShader;
         });
         scene.add(room);
 
@@ -80,7 +92,10 @@ function RoomViewer({ src, poster, alt }) {
         const box = new THREE.Box3().setFromObject(room);
         const center = box.getCenter(new THREE.Vector3());
         const radius = box.getSize(new THREE.Vector3()).length() / 2;
-        const distance = radius / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2)) * 0.88;
+        // fit to whichever is narrower, the frame's height or its width
+        const vFov = THREE.MathUtils.degToRad(camera.fov);
+        const hFov = 2 * Math.atan(Math.tan(vFov / 2) * camera.aspect);
+        const distance = radius / Math.sin(Math.min(vFov, hFov) / 2) * 0.88;
         controls.target.copy(center);
         const front = new THREE.Spherical(distance, THREE.MathUtils.degToRad(58), THREE.MathUtils.degToRad(45));
         camera.position.setFromSpherical(front).add(center);
