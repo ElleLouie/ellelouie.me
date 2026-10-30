@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import projects from '../data/projects';
 import NotFound from './notFound';
+import RoomViewer from './roomViewer';
 
 function Project(props) {
   const { slug } = useParams();
@@ -22,6 +23,7 @@ function Project(props) {
       {project.link && (
         <a href={project.link.href} className="button label" target="_blank" rel="noreferrer">{project.link.label}</a>
       )}
+      {project.model && <RoomViewer src={project.model} poster={project.cover} alt={project.title} />}
       <div className="project_images">
         {[project.cover, ...(project.images || [])].map((src, i) => (
           <img key={src} src={src} alt={`${project.title} ${i + 1}`} loading={i ? 'lazy' : 'eager'} />

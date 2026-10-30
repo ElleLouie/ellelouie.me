@@ -356,7 +356,7 @@ nav {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
   gap: 48px 24px;
 }
 
@@ -373,7 +373,7 @@ nav {
 }
 
 .card_frame {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1;
   overflow: hidden;
   margin-bottom: 18px;
   background: var(--pink);
@@ -496,10 +496,66 @@ nav {
 }
 
 .project_images {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
-  padding-top: 40px;
+  padding-top: 16px;
+  // the first image spans the full width, the rest sit side by side
+  img:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+// interactive 3D view of a project
+.room_viewer {
+  position: relative;
+  aspect-ratio: 1;
+  max-height: 80vh;
+  width: 100%;
+  margin-top: 40px;
+  background: linear-gradient(160deg, var(--pink) 0%, var(--mauve) 100%);
+  overflow: hidden;
+}
+
+.room_viewer_canvas {
+  position: absolute;
+  inset: 0;
+  cursor: grab;
+  // a touch more colour and contrast, to match the Blender renders
+  filter: saturate(1.1) contrast(1.03);
+  canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+.room_viewer_canvas:active {
+  cursor: grabbing;
+}
+
+.room_viewer_poster {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  object-fit: cover;
+}
+
+.room_viewer-loading .room_viewer_poster {
+  filter: blur(6px);
+  opacity: 0.7;
+}
+
+.room_viewer_hint {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  padding: 8px 16px;
+  background: rgba(250, 245, 239, 0.85);
+  color: var(--plum);
+  pointer-events: none;
+  white-space: nowrap;
 }
 
 .not_found {
@@ -555,5 +611,9 @@ nav {
 
   .cv {
     padding: 4px 20px;
+  }
+
+  .room_viewer {
+    margin-top: 24px;
   }
 }
