@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import projects from '../data/projects';
 import NotFound from './notFound';
 import RoomViewer from './roomViewer';
+import FoodJournal from './foodJournal';
 
 function Project(props) {
   const { slug } = useParams();
@@ -30,11 +31,14 @@ function Project(props) {
         </div>
       </header>
       {project.model && <RoomViewer src={project.model} poster={project.cover} alt={project.title} />}
-      <div className="collage">
-        {[project.cover, ...(project.images || [])].map((src, i) => (
-          <img key={src} src={src} alt={`${project.title} ${i + 1}`} loading={i ? 'lazy' : 'eager'} className={`collage_item collage_item-${i % 3}`} />
-        ))}
-      </div>
+      {project.feature === 'journal' && <FoodJournal />}
+      {!project.feature && (
+        <div className="collage">
+          {[project.cover, ...(project.images || [])].map((src, i) => (
+            <img key={src} src={src} alt={`${project.title} ${i + 1}`} loading={i ? 'lazy' : 'eager'} className={`collage_item collage_item-${i % 3}`} />
+          ))}
+        </div>
+      )}
     </article>
   );
 }
