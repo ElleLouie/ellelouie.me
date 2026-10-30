@@ -384,12 +384,11 @@ nav {
 }
 
 .card_frame {
-  aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: var(--pink);
+  border-radius: 6px;
+  // images keep their own shape, so nothing is cropped
   img {
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     transition: transform 700ms ease;
   }
 }
@@ -596,40 +595,104 @@ nav {
   white-space: nowrap;
 }
 
-// renders laid out as a loose, overlapping collage in mixed shapes
-.collage {
+// project images: the first full width, the rest side by side; click to view larger
+.gallery {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
   padding-top: clamp(24px, 4vw, 48px);
 }
 
-.collage_item {
-  object-fit: cover;
-  box-shadow: 0 30px 60px -35px rgba(107, 61, 72, 0.5);
+.gallery_item {
+  display: block;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: zoom-in;
+  overflow: hidden;
+  border-radius: 8px;
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 500ms ease;
+  }
+  &:hover img {
+    transform: scale(1.02);
+  }
 }
 
-.collage_item-0 {
-  grid-column: 1 / 9;
-  grid-row: 1;
-  aspect-ratio: 4 / 3;
+.gallery_item:first-child {
+  grid-column: 1 / -1;
 }
 
-// tall image overlapping the first one, dropped a little lower
-.collage_item-1 {
-  grid-column: 8 / 13;
-  grid-row: 1 / 3;
-  align-self: start;
-  aspect-ratio: 3 / 4;
-  margin-top: 18%;
-  position: relative;
-  z-index: 1;
+.gallery {
+  align-items: center;
 }
 
-.collage_item-2 {
-  grid-column: 2 / 8;
-  grid-row: 2;
-  aspect-ratio: 16 / 10;
-  margin-top: 32px;
+// full-screen image viewer
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 4vw, 56px);
+  background: rgba(33, 22, 24, 0.97);
+  cursor: zoom-out;
+  img {
+    // always fits the screen, leaving room for the controls
+    max-width: calc(100vw - 140px);
+    max-height: calc(100vh - 140px);
+    max-height: calc(100dvh - 140px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    cursor: default;
+  }
+}
+
+.lightbox_close,
+.lightbox_arrow {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(250, 245, 239, 0.12);
+  color: var(--cream);
+  font-size: 24px;
+  cursor: pointer;
+  &:hover {
+    background: rgba(250, 245, 239, 0.25);
+  }
+}
+
+.lightbox_close {
+  top: 16px;
+  right: 16px;
+  font-size: 30px;
+}
+
+.lightbox_arrow-prev {
+  left: 16px;
+  top: 50%;
+}
+
+.lightbox_arrow-next {
+  right: 16px;
+  top: 50%;
+}
+
+.lightbox_count {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--pink);
 }
 
 .not_found {
@@ -999,19 +1062,18 @@ nav {
     }
   }
 
-  .collage_item-0 {
-    grid-column: 1 / 11;
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
-  .collage_item-1 {
-    grid-column: 6 / 13;
-    grid-row: 2 / 4;
-    margin-top: -24px;
+  .lightbox img {
+    max-width: calc(100vw - 32px);
   }
 
-  .collage_item-2 {
-    grid-column: 1 / 9;
-    grid-row: 4;
-    margin-top: -32px;
+  .lightbox_arrow-prev,
+  .lightbox_arrow-next {
+    top: auto;
+    bottom: 12px;
   }
 }
