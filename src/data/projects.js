@@ -26,10 +26,9 @@ const projects = [
     slug: 'mini-apartment',
     title: 'Mini Apartment',
     medium: 'Blender',
-    note: 'A tiny room of things I love, modeled, lit and baked in Blender.',
+    note: 'A tiny room of things I love, modeled and rendered in Blender.',
     cover: roomImg,
     images: [deskImg, cornerImg],
-    model: '/models/apartment.glb',
   },
 ];
 
