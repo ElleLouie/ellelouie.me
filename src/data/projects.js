@@ -12,13 +12,24 @@
 //   cover: coverImg,
 //   images: [detail1],
 //   link: { href: 'https://example.com', label: 'see it live' },
+//   model: '/models/my-project.glb', // optional: a baked .glb shown as an interactive 3D view
 // },
 //
-// Leave out `cover` to show the card as "coming soon".
 // More ideas we plan to build are in docs/project-ideas.md.
 
-// Empty for now: the site shows "coming soon" until a project is added.
-// First up is the Blender mini apartment (see docs/project-ideas.md).
-const projects = [];
+import roomImg from '../img/mini-apartment/room.webp';
+import deskImg from '../img/mini-apartment/desk.webp';
+import cornerImg from '../img/mini-apartment/corner.webp';
+
+const projects = [
+  {
+    slug: 'mini-apartment',
+    title: 'Mini Apartment',
+    medium: 'Blender',
+    note: 'A tiny room of things I love, modeled and rendered in Blender.',
+    cover: roomImg,
+    images: [deskImg, cornerImg],
+  },
+];
 
 export default projects;

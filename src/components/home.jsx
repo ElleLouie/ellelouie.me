@@ -63,8 +63,12 @@ function Home(props) {
               <Reveal key={project.slug}>
                 <Link to={`/portfolio/${project.slug}`} className="card">
                   <div className="card_frame"><img src={project.cover} alt="" loading="lazy" /></div>
-                  <p className="label">{project.medium}</p>
-                  <h3 className="italic_heading">{project.title}</h3>
+                  <div className="card_text">
+                    <p className="label">{project.medium}</p>
+                    <h3 className="italic_heading">{project.title}</h3>
+                    <p className="card_note">{project.note}</p>
+                    <span className="card_more label">View project &rarr;</span>
+                  </div>
                 </Link>
               </Reveal>
             ))}
