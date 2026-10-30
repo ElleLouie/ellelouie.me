@@ -34,11 +34,20 @@ function RoomViewer({ src, poster, alt }) {
       const controls = new OrbitControls(camera, renderer.domElement);
       controls.enableDamping = true;
       controls.enablePan = false;
-      // hide the "drag" hint once someone starts exploring
-      controls.addEventListener('start', () => setStatus('exploring'), { once: true });
+      // hide the "drag" hint and stop the idle sway once someone starts exploring
+      controls.addEventListener('start', () => {
+        controls.autoRotate = false;
+        setStatus('exploring');
+      }, { once: true });
 
       let frame;
       const render = () => {
+        // sway back and forth between the rotation limits while idle
+        if (controls.autoRotate) {
+          const azimuth = controls.getAzimuthalAngle();
+          if (azimuth <= controls.minAzimuthAngle + 0.05) controls.autoRotateSpeed = -Math.abs(controls.autoRotateSpeed);
+          if (azimuth >= controls.maxAzimuthAngle - 0.05) controls.autoRotateSpeed = Math.abs(controls.autoRotateSpeed);
+        }
         controls.update();
         renderer.render(scene, camera);
         frame = requestAnimationFrame(render);
@@ -83,6 +92,8 @@ function RoomViewer({ src, poster, alt }) {
         controls.maxPolarAngle = THREE.MathUtils.degToRad(80);
         controls.minDistance = distance * 0.6;
         controls.maxDistance = distance * 1.25;
+        controls.autoRotate = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        controls.autoRotateSpeed = 0.5;
         controls.update();
 
         setStatus('ready');
