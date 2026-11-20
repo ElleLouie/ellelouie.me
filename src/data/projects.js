@@ -24,7 +24,7 @@ import roomImg from '../img/mini-apartment/room.webp';
 import deskImg from '../img/mini-apartment/desk.webp';
 import cornerImg from '../img/mini-apartment/corner.webp';
 import miseImg from '../img/mise/cover.webp';
-import miseHomeImg from '../img/mise/home.webp';
+import miseTimelineImg from '../img/mise/timeline.webp';
 import miseTableImg from '../img/mise/table.webp';
 
 const projects = [
@@ -41,9 +41,9 @@ const projects = [
     slug: 'mise',
     title: 'mise',
     medium: 'React app',
-    note: 'A recipe app that plans the week, knows what’s in your kitchen, and cooks with you step by step.',
+    note: 'A dinner party planner: pick a menu, and it builds the shopping list, a cooking timeline that ends at dinner, and a 3D table.',
     cover: miseImg,
-    images: [miseHomeImg, miseTableImg],
+    images: [miseTimelineImg, miseTableImg],
     link: { href: 'https://github.com/ElleLouie/mise', label: 'View the code' },
   },
 ];
