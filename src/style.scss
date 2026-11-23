@@ -1,15 +1,17 @@
-// palette from the inspiration board: dusty pink, mauve and cream, with deep plum for contrast
+// blush pink, warm taupe and a soft charcoal (--plum is the dark: buttons, links and the contact band)
 :root {
-  --blush: #f3e8e4;
-  --cream: #faf5ef;
-  --pink: #e8c8cb;
-  --mauve: #c9a0a8;
-  --plum: #6b3d48;
-  --ink: #33211f;
-  --muted: #6f5858;
+  --blush: #f3dde2;
+  --cream: #fbf1f3;
+  --pink: #ead0d6;
+  --mauve: #b7a99a;
+  --plum: #393431;
+  --ink: #393431;
+  --muted: #6e625e;
 
   --serif: 'Bodoni Moda', 'Didot', Georgia, serif;
   --sans: 'DM Sans', system-ui, sans-serif;
+  // one bright colour that pops against the pink and black
+  --accent: #b7a99a;
   --hand: 'Caveat', cursive;
 
   --gutter: clamp(16px, 5vw, 64px);
@@ -69,7 +71,7 @@ img {
 
 // Bodoni Moda gets very fine hairlines at large optical sizes; pinning a
 // smaller optical size keeps the same look with sturdier, easier-to-read strokes
-h1, h2, h3, em, .italic_heading, .nav-logo, .contact_email {
+h1, h2, h3, em, .italic_heading, .section_title, .card_title, .nav-logo, .contact_email {
   font-optical-sizing: none;
   font-variation-settings: 'opsz' 20;
 }
@@ -103,18 +105,19 @@ a:focus-visible, button:focus-visible {
   background: var(--pink);
 }
 
-// tiny uppercase label
+// small uppercase label: kept for the nav and a few quiet details
 .label {
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   margin: 0;
 }
 
-// the elegant italic used for headings, like "The process"
-.italic_heading {
+.italic_heading,
+.section_title,
+.card_title {
   font-family: var(--serif);
   font-style: italic;
   font-weight: 500;
@@ -151,25 +154,63 @@ a:focus-visible, button:focus-visible {
   background: var(--ink);
 }
 
-// fade up on scroll
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 900ms ease, transform 900ms ease;
+// a text link: the underline draws in on hover
+.text_link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--plum);
+  font-size: 17px;
+  font-weight: 500;
+  text-decoration: none;
+  background: linear-gradient(var(--accent), var(--accent)) 0 calc(100% - 9px) / 100% 4px no-repeat;
+  transition: background-size 300ms ease;
+  &::after {
+    content: '\2192';
+    margin-left: 8px;
+    transition: transform 200ms ease;
+  }
+  &:hover {
+    background-size: 100% 12px;
+  }
+  &:hover::after {
+    transform: translateX(3px);
+  }
 }
 
-.reveal-shown {
-  opacity: 1;
-  transform: none;
+.button {
+  min-height: 48px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 200ms ease, transform 120ms ease;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+// the hero comes in once, on load; nothing else animates on scroll except the about statement
+[data-enter] > * {
+  animation: enter 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+[data-enter] > :nth-child(2) {
+  animation-delay: 150ms;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .reveal {
-    transform: none;
-    transition: opacity 400ms ease;
+  [data-enter] > * {
+    animation: none;
   }
 }
 
@@ -178,7 +219,7 @@ a:focus-visible, button:focus-visible {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(243, 232, 228, 0.88);
+  background: color-mix(in srgb, var(--blush) 88%, transparent);
   backdrop-filter: blur(10px);
 }
 
@@ -208,6 +249,9 @@ nav {
 }
 
 .nav-item {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   text-decoration: none;
   transition: color 200ms ease;
 }
@@ -228,54 +272,57 @@ nav {
   border-top: 1px solid rgba(232, 200, 203, 0.25);
 }
 
-// HERO
+// HERO: who I am and what I build, beside an open book of my projects
 .hero {
-  position: relative;
   max-width: var(--max);
   margin: 0 auto;
-  padding: clamp(24px, 4vw, 48px) var(--gutter) clamp(56px, 8vw, 112px);
-}
-
-// side text, like "CREATIVE AGENCY WEBSITE"
-.vertical_label {
-  position: absolute;
-  left: calc(var(--gutter) / 2 - 6px);
-  bottom: clamp(56px, 8vw, 112px);
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  color: var(--muted);
+  min-height: min(calc(100svh - 72px), 720px);
+  padding: clamp(24px, 4vw, 48px) var(--gutter) clamp(48px, 6vw, 80px);
+  display: flex;
+  align-items: center;
 }
 
 .wordmark {
-  font-size: clamp(64px, 15vw, 210px);
+  font-size: clamp(64px, 9vw, 132px);
   line-height: 0.9;
   letter-spacing: -0.03em;
-  margin-bottom: clamp(24px, 4vw, 48px);
   em {
     color: var(--plum);
   }
 }
 
-.hero_collage {
-  display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  align-items: center;
+.hero_role {
+  max-width: 30em;
+  margin: clamp(20px, 3vw, 28px) 0 0;
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 
-.hero_card {
-  position: relative;
-  z-index: 1;
-  background: var(--cream);
-  padding: clamp(28px, 4vw, 56px);
-  margin-right: -64px;
-  box-shadow: 0 24px 50px -30px rgba(107, 61, 72, 0.45);
-  p {
-    max-width: 320px;
-    margin: 20px 0 28px;
-  }
-  .label {
-    color: var(--muted);
-    margin: 0;
+// a highlighter swipe of the accent behind a few words
+.mark {
+  background: linear-gradient(transparent 55%, var(--accent) 55% 92%, transparent 92%);
+  padding: 0 2px;
+}
+
+.hero_facts {
+  max-width: 34em;
+  margin: 16px 0 0;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.hero_actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 28px;
+  margin-top: 32px;
+  .button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 28px;
   }
 }
 
@@ -285,79 +332,38 @@ nav {
   background: linear-gradient(160deg, var(--pink) 0%, var(--mauve) 100%);
 }
 
-.hero_visual {
+.hero_tile .room_viewer {
   position: absolute;
-  inset: 4%;
-  canvas {
-    position: absolute;
-    inset: 0;
-    width: 100% !important;
-    height: 100% !important;
-  }
+  inset: 0;
+  height: auto;
+  margin: 0;
 }
 
-.hero_visual-fallback {
-  background: radial-gradient(circle at 40% 40%, var(--cream) 0%, transparent 35%);
+.hero_tile .room_viewer_hint {
+  bottom: 12px;
 }
 
 // SECTIONS
 .section {
   max-width: var(--max);
   margin: 0 auto;
-  padding: clamp(48px, 8vw, 104px) var(--gutter);
+  padding: clamp(56px, 8vw, 112px) var(--gutter);
   scroll-margin-top: 60px;
 }
 
-.section_head {
-  display: flex;
-  align-items: baseline;
-  gap: 20px;
+.section_title {
+  font-size: clamp(32px, 4vw, 52px);
   padding-bottom: 20px;
-  margin-bottom: clamp(28px, 4vw, 48px);
+  margin-bottom: clamp(32px, 4vw, 56px);
   border-bottom: 1px solid var(--mauve);
-  .label {
-    color: var(--muted);
-  }
-}
-
-// coming soon mosaic, like the ophie grid
-.mosaic {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr 1fr;
-  gap: 12px;
-  min-height: clamp(260px, 32vw, 400px);
-}
-
-.mosaic_tile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 16px;
-  padding: 24px;
-}
-
-.mosaic_tile-pink {
-  background: var(--pink);
-  padding: 0;
-}
-
-.mosaic_tile-cream {
-  background: var(--cream);
-  .label {
-    color: var(--muted);
-  }
-}
-
-.mosaic_tile-mauve {
-  background: var(--mauve);
-  padding: 0;
 }
 
 .cards {
   display: grid;
-  gap: clamp(56px, 8vw, 104px);
+  gap: clamp(64px, 8vw, 112px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 // every project is a wide card; the image alternates sides down the page
@@ -367,13 +373,11 @@ nav {
   gap: clamp(24px, 4vw, 56px);
   align-items: center;
   text-decoration: none;
-  .label {
-    color: var(--muted);
-    margin-bottom: 8px;
-  }
-  .italic_heading {
-    font-size: clamp(34px, 4vw, 52px);
-  }
+}
+
+.card_title {
+  margin: 0;
+  font-size: clamp(32px, 3.6vw, 48px);
 }
 
 .cards > :nth-child(even) .card {
@@ -389,27 +393,31 @@ nav {
   // images keep their own shape, so nothing is cropped
   img {
     height: auto;
-    transition: transform 700ms ease;
+    transition: transform 600ms ease;
   }
+}
+
+.card_tools {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 16px;
 }
 
 .card_note {
-  margin: 16px 0 24px;
-  max-width: 360px;
-}
-
-.card_more {
-  color: var(--plum);
-  border-bottom: 1px solid var(--mauve);
-  padding-bottom: 4px;
+  margin: 16px 0 12px;
+  max-width: 400px;
+  font-size: 18px;
 }
 
 .card:hover {
-  img {
-    transform: scale(1.04);
+  .card_frame img {
+    transform: scale(1.025);
   }
-  .card_more {
-    border-color: var(--plum);
+  .text_link {
+    background-size: 100% 12px;
+  }
+  .text_link::after {
+    transform: translateX(3px);
   }
 }
 
@@ -421,7 +429,7 @@ nav {
   align-items: start;
 }
 
-// CV-style rows, like the Kiara Shardé board
+// CV-style rows
 .cv {
   margin: 0;
   background: var(--cream);
@@ -430,7 +438,7 @@ nav {
 
 .cv_row {
   display: grid;
-  grid-template-columns: 80px 1fr;
+  grid-template-columns: 88px 1fr;
   gap: 16px;
   align-items: baseline;
   padding: 16px 0;
@@ -440,6 +448,8 @@ nav {
   }
   dt {
     color: var(--muted);
+    font-size: 15px;
+    font-weight: 500;
   }
   dd {
     margin: 0;
@@ -456,15 +466,19 @@ nav {
 .contact_inner {
   max-width: var(--max);
   margin: 0 auto;
-  padding: clamp(64px, 10vw, 128px) var(--gutter);
+  padding: clamp(72px, 10vw, 136px) var(--gutter);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 24px;
-  > .label {
-    color: var(--pink);
-  }
+  gap: 20px;
+}
+
+.contact_title {
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent);
 }
 
 .contact_email {
@@ -478,15 +492,19 @@ nav {
 }
 
 .contact_email:hover {
-  color: var(--pink);
+  color: var(--accent);
 }
 
 .contact_links {
   display: flex;
   gap: 32px;
   a {
-    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     color: var(--pink);
+    font-size: 17px;
+    text-decoration: none;
   }
   a:hover {
     color: var(--cream);
@@ -1007,34 +1025,18 @@ nav {
   }
 
   .nav-item {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.12em;
   }
 
-  .vertical_label {
-    display: none;
-  }
-
-  .hero_collage {
+  .hero {
     grid-template-columns: 1fr;
+    min-height: 0;
   }
 
-  .hero_card {
-    order: 2;
-    margin: -48px 16px 0;
-  }
-
-  .mosaic {
-    grid-template-columns: 40px minmax(0, 1fr) 40px;
-    gap: 8px;
-    min-height: 240px;
-  }
-
-  .mosaic_tile-cream {
-    padding: 24px 16px;
-    .italic_heading {
-      font-size: 34px;
-    }
+  .hero_actions .button {
+    flex: 1;
+    justify-content: center;
   }
 
   .about_body {
