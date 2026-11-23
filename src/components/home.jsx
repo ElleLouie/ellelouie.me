@@ -1,8 +1,11 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import projects from '../data/projects';
 import { facts } from '../data/about';
 import socials, { email } from '../data/socials';
+
+// three.js only loads with the bust
+const HeroBust = lazy(() => import('./heroBust'));
 
 function Home(props) {
   const { hash } = useLocation();
@@ -24,6 +27,18 @@ function Home(props) {
             <a href={`mailto:${email}`} className="text_link">Email me</a>
           </div>
         </div>
+        <figure className="hero_tile">
+          <Suspense fallback={null}>
+            <HeroBust />
+          </Suspense>
+          {/* a wall label, like the ones beside a museum piece */}
+          <figcaption className="wall_label">
+            <b>Elle Louie</b>
+            <span>American, b. Dartmouth</span>
+            <span>Software, Blender and studio art</span>
+            <span>2026</span>
+          </figcaption>
+        </figure>
       </section>
 
       <section id="work" className="section">
