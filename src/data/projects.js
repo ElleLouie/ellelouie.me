@@ -24,8 +24,8 @@ import roomImg from '../img/mini-apartment/room.webp';
 import deskImg from '../img/mini-apartment/desk.webp';
 import cornerImg from '../img/mini-apartment/corner.webp';
 import miseImg from '../img/mise/cover.webp';
-import miseTimelineImg from '../img/mise/timeline.webp';
-import miseTableImg from '../img/mise/table.webp';
+import miseDiscoverImg from '../img/mise/discover.webp';
+import miseDarkImg from '../img/mise/discover-dark.webp';
 import dimeImg from '../img/dime/cover.webp';
 import dimeDecideImg from '../img/dime/decide.webp';
 import dimeEndImg from '../img/dime/end.webp';
@@ -44,10 +44,10 @@ const projects = [
     slug: 'mise',
     title: 'mise',
     medium: 'React, IndexedDB, three.js',
-    note: 'A dinner party planner for menus, shopping lists and cooking timelines.',
+    note: 'Dinner party inspiration. Reroll a theme, colors and a menu, and the table changes to match.',
     cover: miseImg,
-    images: [miseTimelineImg, miseTableImg],
-    link: { href: 'https://github.com/ElleLouie/mise', label: 'View the code' },
+    images: [miseDiscoverImg, miseDarkImg],
+    link: { href: 'https://misebyelle.netlify.app/', label: 'Try it' },
   },
   {
     slug: 'dime',
